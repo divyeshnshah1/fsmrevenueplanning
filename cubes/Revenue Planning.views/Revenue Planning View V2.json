@@ -1,0 +1,19 @@
+{
+	"@type":"MDXView",
+	"Name":"Revenue Planning View V2",
+	"MDX@Code.link":"Revenue Planning View V2.mdx",
+	"Meta": {
+		"Aliases": {},
+		"ExpandAboves": {
+			"[Version].[Version]": false,
+			"[Clients and Segments].[Clients and Segments]": false
+		},
+		"ContextSets": {}
+	},
+	"ViewExtractSkipRuleValues": false,
+	"ViewExtractSkipConsolidatedValues": true,
+	"ViewExtractSkipZeroes": true,
+	"IsSuppressComputeOnOpen": false,
+	"IsAutocalculate": true,
+	"IsDeferComputeOnLeafDataEntry": false
+}

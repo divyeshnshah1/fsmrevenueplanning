@@ -1,0 +1,6 @@
+{
+	"@type":"Subset",
+	"Name":"Time Period Detail",
+	"Alias":"MEMBER_NAME",
+	"Expression":"TM1IGNORE_BADTUPLES {TM1FILTERBYLEVEL(TM1SUBSETALL([Time Period].[Time Period]) , 0)}"
+}

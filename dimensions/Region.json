@@ -1,0 +1,13 @@
+{
+	"@type":"Dimension",
+	"Name":"Region",
+	"Hierarchies@Code.links":
+	[
+		"Region.hierarchies/Region.json",
+		"Region.hierarchies/Region North America.json"
+	],
+	"DefaultHierarchy":
+	{
+		"@id":"Dimensions('Region')/Hierarchies('Region')"
+	}
+}

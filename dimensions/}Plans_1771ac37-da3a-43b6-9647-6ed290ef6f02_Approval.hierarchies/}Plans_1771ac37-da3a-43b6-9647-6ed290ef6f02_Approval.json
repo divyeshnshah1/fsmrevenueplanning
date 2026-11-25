@@ -1,0 +1,45 @@
+{
+	"@type":"Hierarchy",
+	"Name":"}Plans_1771ac37-da3a-43b6-9647-6ed290ef6f02_Approval",
+	"Elements":
+	[
+		{
+			"Name":"North America",
+			"Type":"Consolidated"
+		},
+		{
+			"Name":"United States",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Canada",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Mexico",
+			"Type":"Numeric"
+		}
+	],
+	"Edges":
+	[
+		{
+			"ParentName":"North America",
+			"ComponentName":"United States",
+			"Weight":1
+		},
+		{
+			"ParentName":"North America",
+			"ComponentName":"Canada",
+			"Weight":1
+		},
+		{
+			"ParentName":"North America",
+			"ComponentName":"Mexico",
+			"Weight":1
+		}
+	],
+	"Subsets@Code.links":
+	[
+		"}Plans_1771ac37-da3a-43b6-9647-6ed290ef6f02_Approval.subsets/Default.json"
+	]
+}

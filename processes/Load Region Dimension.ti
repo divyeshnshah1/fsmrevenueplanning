@@ -1,0 +1,88 @@
+#region Prolog
+MinorErrorLogMax = -1;
+OnMinorErrorDoItemSkip = 1;
+SetInputCharacterSet('TM1CS_ISO_8859_1');
+vType='N';
+vWeight=1.0;
+If (DimensionExists('Region') = 0);
+DimensionCreate('Region');
+EndIf;
+lastAttr='';
+iAttr=DIMSIZ('}ElementAttributes_Region');
+i=iAttr;
+While(i > 0);
+attrName = DIMNM('}ElementAttributes_Region', i);
+If(SUBST(attrName,0,1)@<>'}');
+lastAttr=attrName;
+i=0;
+Else;
+i=i-1;
+EndIf;
+End;
+ElementAttrInsert('Region','Region',lastAttr,'Currency','S');
+lastAttr = 'Currency';
+ElementAttrInsert('Region','Region',lastAttr,'Country Code Alias','A');
+lastAttr = 'Country Code Alias';
+
+#endregion
+#region Metadata
+vLastMember='';
+If(Level_3_Country@<>'');
+If(vLastMember@='');
+HierarchyElementInsert('Region','Region','',Level_3_Country,vType);
+Else;
+If(HierarchyElementExists('Region','Leaves',Level_3_Country)=1);
+StringToNumber('IMPERROR_CL_'|Level_3_Country);
+EndIf;
+HierarchyElementInsert('Region','Region','',Level_3_Country,'C');
+HierarchyElementComponentAdd('Region','Region',Level_3_Country,vLastMember,vWeight);
+EndIf;
+vLastMember=Level_3_Country;
+EndIf;
+If(Level_2_SubRegion@<>'');
+If(vLastMember@='');
+HierarchyElementInsert('Region','Region','',Level_2_SubRegion,vType);
+Else;
+If(HierarchyElementExists('Region','Leaves',Level_2_SubRegion)=1);
+StringToNumber('IMPERROR_CL_'|Level_2_SubRegion);
+EndIf;
+HierarchyElementInsert('Region','Region','',Level_2_SubRegion,'C');
+HierarchyElementComponentAdd('Region','Region',Level_2_SubRegion,vLastMember,vWeight);
+EndIf;
+vLastMember=Level_2_SubRegion;
+EndIf;
+If(Level_1_Geo@<>'');
+If(vLastMember@='');
+HierarchyElementInsert('Region','Region','',Level_1_Geo,vType);
+Else;
+If(HierarchyElementExists('Region','Leaves',Level_1_Geo)=1);
+StringToNumber('IMPERROR_CL_'|Level_1_Geo);
+EndIf;
+HierarchyElementInsert('Region','Region','',Level_1_Geo,'C');
+HierarchyElementComponentAdd('Region','Region',Level_1_Geo,vLastMember,vWeight);
+EndIf;
+vLastMember=Level_1_Geo;
+EndIf;
+If(Level_0_Global@<>'');
+If(vLastMember@='');
+HierarchyElementInsert('Region','Region','',Level_0_Global,vType);
+Else;
+If(HierarchyElementExists('Region','Leaves',Level_0_Global)=1);
+StringToNumber('IMPERROR_CL_'|Level_0_Global);
+EndIf;
+HierarchyElementInsert('Region','Region','',Level_0_Global,'C');
+HierarchyElementComponentAdd('Region','Region',Level_0_Global,vLastMember,vWeight);
+EndIf;
+vLastMember=Level_0_Global;
+EndIf;
+
+#endregion
+#region Data
+If(Level_3_Country@<>'');
+ElementAttrPutS(Local_Currency,'Region','Region',Level_3_Country,'Currency');
+EndIf;
+If(Level_3_Country@<>'');
+ElementAttrPutS(Macro_Country_Code,'Region','Region',Level_3_Country,'Country Code Alias');
+EndIf;
+
+#endregion

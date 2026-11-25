@@ -1,0 +1,14 @@
+{
+	"@type":"Process",
+	"Name":"}Plans_SecurityCleanup",
+	"HasSecurityAccess":false,
+	"Code@Code.link":"}Plans_SecurityCleanup.ti",
+	"DataSource":
+	{
+		"Type":"None"
+	},
+	"Parameters":[],
+	"Variables":[],
+	"UIData": "_ParameterConstraints=e30=\f",
+	"VariablesUIData": []
+}

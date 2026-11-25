@@ -1,0 +1,20 @@
+{
+	"@type":"Cube",
+	"Name":"}Plans_1771ac37-da3a-43b6-9647-6ed290ef6f02_State",
+	"Dimensions":
+	[
+		{
+			"@id":"Dimensions('}Plans_1771ac37-da3a-43b6-9647-6ed290ef6f02_Approval')"
+		},
+		{
+			"@id":"Dimensions('}Plans_1771ac37-da3a-43b6-9647-6ed290ef6f02_Tasks')"
+		},
+		{
+			"@id":"Dimensions('}Plans_State')"
+		}
+	],
+	"Views@Code.links":
+	[
+		"}Plans_1771ac37-da3a-43b6-9647-6ed290ef6f02_State.views/Default.json"
+	]
+}

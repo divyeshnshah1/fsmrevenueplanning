@@ -1,0 +1,47 @@
+#region Prolog
+MinorErrorLogMax = -1;
+OnMinorErrorDoItemSkip = 1;
+NumMetaRowsRead = 0;
+NumMetaRowsProcessed = 0;
+NumRowsRead = 0;
+NumRowsProcessed = 0;
+SetInputCharacterSet('TM1CS_ISO_8859_1');
+
+#endregion
+#region Metadata
+NumMetaRowsRead = NumMetaRowsRead + 1;
+If(Region@<>'');
+HierarchyElementInsert('Region','Region','',Region,'N');
+EndIf;
+If(Products_and_Services@<>'');
+HierarchyElementInsert('Products and Services','Products and Services','',Products_and_Services,'N');
+EndIf;
+If(Clients_and_Segments@<>'');
+HierarchyElementInsert('Clients and Segments','Clients and Segments','',Clients_and_Segments,'N');
+EndIf;
+If(Time_Period@<>'');
+HierarchyElementInsert('Time Period','Time Period','',Time_Period,'N');
+EndIf;
+If(Version@<>'');
+HierarchyElementInsert('Version','Version','',Version,'N');
+EndIf;
+If(Measures@<>'');
+HierarchyElementInsert('Measures','Measures','',Measures,'N');
+EndIf;
+NumMetaRowsProcessed = NumMetaRowsProcessed + 1;
+
+#endregion
+#region Data
+NumRowsRead = NumRowsRead + 1;
+If (Value @<> '');
+CellPutN(StringToNumberEx(Value,'.',','),'Revenue Planning',Region,Products_and_Services,Clients_and_Segments,Time_Period,Version,Measures);
+NumRowsProcessed = NumRowsProcessed + 1;
+EndIf;
+
+#endregion
+#region Epilog
+If (pResult @<> '');
+TextOutput(pResult, NumberToString(NumRowsRead), NumberToString(NumRowsProcessed), NumberToString(NumMetaRowsRead), NumberToString(NumMetaRowsProcessed));
+EndIf;
+
+#endregion

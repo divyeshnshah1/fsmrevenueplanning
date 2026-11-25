@@ -1,0 +1,17 @@
+{
+	"@type":"Cube",
+	"Name":"}Plans_1771ac37-da3a-43b6-9647-6ed290ef6f02_Errors",
+	"Dimensions":
+	[
+		{
+			"@id":"Dimensions('}Plans_1771ac37-da3a-43b6-9647-6ed290ef6f02_Tasks')"
+		},
+		{
+			"@id":"Dimensions('}Plans_1771ac37-da3a-43b6-9647-6ed290ef6f02_ErrorLines')"
+		},
+		{
+			"@id":"Dimensions('}Plans_Errors')"
+		}
+	],
+	"Views@Code.links":[]
+}

@@ -1,0 +1,12 @@
+{
+	"@type":"Dimension",
+	"Name":"}HierarchyAttributes_Clients and Segments",
+	"Hierarchies@Code.links":
+	[
+		"}HierarchyAttributes_Clients and Segments.hierarchies/}HierarchyAttributes_Clients and Segments.json"
+	],
+	"DefaultHierarchy":
+	{
+		"@id":"Dimensions('}HierarchyAttributes_Clients and Segments')/Hierarchies('}HierarchyAttributes_Clients and Segments')"
+	}
+}

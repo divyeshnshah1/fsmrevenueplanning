@@ -1,0 +1,45 @@
+{
+	"@type":"Hierarchy",
+	"Name":"Region North America",
+	"Elements":
+	[
+		{
+			"Name":"North America",
+			"Type":"Consolidated"
+		},
+		{
+			"Name":"United States",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Canada",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Mexico",
+			"Type":"Numeric"
+		}
+	],
+	"Edges":
+	[
+		{
+			"ParentName":"North America",
+			"ComponentName":"United States",
+			"Weight":1
+		},
+		{
+			"ParentName":"North America",
+			"ComponentName":"Canada",
+			"Weight":1
+		},
+		{
+			"ParentName":"North America",
+			"ComponentName":"Mexico",
+			"Weight":1
+		}
+	],
+	"Subsets@Code.links":
+	[
+		"Region North America.subsets/Region North America.json"
+	]
+}

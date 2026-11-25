@@ -1,0 +1,6 @@
+{
+	"@type":"Subset",
+	"Name":"Region North America",
+	"Alias":"MEMBER_NAME",
+	"Expression":"TM1IGNORE_BADTUPLES {[Region].[Region North America].MEMBERS}"
+}

@@ -1,0 +1,44 @@
+{
+	"@type":"Hierarchy",
+	"Name":"Measures",
+	"Elements":
+	[
+		{
+			"Name":"Net Interest Income",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Non-Interest Revenue",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Fee & Commission Income",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Trading Revenue",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Investment Gains",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Other Income",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Advisory Services Fees",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Commentary",
+			"Type":"String"
+		},
+		{
+			"Name":"Interest Rates",
+			"Type":"Numeric"
+		}
+	],
+	"Subsets@Code.links":[]
+}

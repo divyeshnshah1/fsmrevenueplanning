@@ -1,0 +1,152 @@
+#region Prolog
+IF ( DimensionExists ( pDimension ) = 0 );
+    ProcessError();
+ENDIF;
+
+# Handling for no hierarchy being provided. Assumes the same name hierarchy as the dimension
+IF ( pHierarchy @= '' );
+    vApprovalHierarchy = pDimension;
+ELSE;
+    vApprovalHierarchy = pHierarchy;
+ENDIF;
+
+IF ( HierarchyExists ( pDimension, vApprovalHierarchy ) = 0 );
+    ProcessError();
+ENDIF;
+
+IF ( pSubset @<> '' );
+    IF ( HierarchySubsetExists( pDimension, pHierarchy, pSubset ) = 0 );
+        ProcessError();
+    ENDIF;
+ENDIF;
+
+# Create a temporary subset to find root members only
+vTempSubset = '}Plans_ValidateRoot_' | TIMST (NOW(), '\Y\m\d\h\i\s' );
+
+# OPTIMIZATION: Instead of iterating through all members, use MDX to get only root-level members
+# This dramatically reduces the number of elements to check from 40k+ to typically 1-10
+
+IF ( pSubset @= '' );
+    # No subset provided - check the entire hierarchy
+    # Get all members at level 0 (roots) using MDX
+    vRootMDX = '{FILTER([' | pDimension | '].[' | vApprovalHierarchy | '].MEMBERS, [' | pDimension | '].[' | vApprovalHierarchy | '].CURRENTMEMBER.LEVEL.ORDINAL = 0)}';
+    # For duplicate check, get all members in hierarchy
+    vAllMembersMDX = '{[' | pDimension | '].[' | vApprovalHierarchy | '].MEMBERS}';
+ELSE;
+    # Subset provided - find the highest level members within that subset
+    # First, get the subset members
+    vSubsetMDX = '{TM1SUBSETTOSET([' | pDimension | '].[' | vApprovalHierarchy | '], "' | pSubset | '")}';
+    
+    # Create a temporary subset from the provided subset to work with
+    vTempInputSubset = '}Plans_ValidateInput_' | TIMST (NOW(), '\Y\m\d\h\i\s' );
+    IF ( HierarchySubsetExists ( pDimension, vApprovalHierarchy, vTempInputSubset ) = 1);
+        HierarchySubsetDestroy ( pDimension, vApprovalHierarchy, vTempInputSubset );
+    ENDIF;
+    SubsetCreatebyMDX ( vTempInputSubset, vSubsetMDX, 1 );
+    
+    # Find the minimum level (highest in hierarchy) in the subset
+    vMinLevel = 999999;
+    vSubsetSize = HierarchySubsetGetSize ( pDimension, vApprovalHierarchy, vTempInputSubset );
+    vIdx = 1;
+    WHILE ( vIdx <= vSubsetSize );
+        vElem = HierarchySubsetGetElementName ( pDimension, vApprovalHierarchy, vTempInputSubset, vIdx );
+        vLevel = ElementLevel ( pDimension, vApprovalHierarchy, vElem );
+        IF ( vLevel < vMinLevel );
+            vMinLevel = vLevel;
+        ENDIF;
+        vIdx = vIdx + 1;
+    END;
+    
+    # Now get only members at that minimum level from the subset
+    vRootMDX = '{FILTER(' | vSubsetMDX | ', [' | pDimension | '].[' | vApprovalHierarchy | '].CURRENTMEMBER.LEVEL.ORDINAL = ' | NumberToString(vMinLevel) | ')}';
+    # For duplicate check, use the subset members
+    vAllMembersMDX = vSubsetMDX;
+    
+    # Clean up temporary input subset
+    IF ( HierarchySubsetExists ( pDimension, vApprovalHierarchy, vTempInputSubset ) = 1);
+        HierarchySubsetDestroy ( pDimension, vApprovalHierarchy, vTempInputSubset );
+    ENDIF;
+ENDIF;
+
+# Create subset with only root-level members
+IF ( HierarchySubsetExists ( pDimension, vApprovalHierarchy, vTempSubset ) = 1);
+    HierarchySubsetDestroy ( pDimension, vApprovalHierarchy, vTempSubset );
+ENDIF;
+SubsetCreatebyMDX ( vTempSubset, vRootMDX, 1 );
+
+# Count root members - should be exactly 1 for a valid hierarchy
+vRootCount = HierarchySubsetGetSize ( pDimension, vApprovalHierarchy, vTempSubset );
+
+IF ( vRootCount = 0 );
+    # No root found - invalid hierarchy
+    sMessage = 'No root element found in hierarchy';
+    ItemReject( sMessage );
+ELSEIF ( vRootCount > 1 );
+    # Multiple roots - invalid hierarchy
+    sMessage = 'Multiple root elements found: ' | NumberToString(vRootCount) | '. A valid responsibility hierarchy must have exactly one root element.';
+    ItemReject( sMessage );
+ENDIF;
+
+# Get the single root element name for reference
+IF ( vRootCount = 1 );
+    vRootElement = HierarchySubsetGetElementName ( pDimension, vApprovalHierarchy, vTempSubset, 1 );
+ENDIF;
+
+# Clean up root subset
+IF ( HierarchySubsetExists ( pDimension, vApprovalHierarchy, vTempSubset ) = 1);
+    HierarchySubsetDestroy ( pDimension, vApprovalHierarchy, vTempSubset );
+ENDIF;
+
+# DUPLICATE CHECK: Verify no element appears multiple times in the hierarchy
+# Create a temporary control dimension to track seen elements
+vControlDim = '}Plans_DuplicateCheck_' | TIMST (NOW(), '\Y\m\d\h\i\s' );
+IF ( DimensionExists ( vControlDim ) = 1 );
+    DimensionDestroy ( vControlDim );
+ENDIF;
+DimensionCreate ( vControlDim );
+
+# Create subset with all members to check
+vAllMembersSubset = '}Plans_AllMembers_' | TIMST (NOW(), '\Y\m\d\h\i\s' );
+IF ( HierarchySubsetExists ( pDimension, vApprovalHierarchy, vAllMembersSubset ) = 1);
+    HierarchySubsetDestroy ( pDimension, vApprovalHierarchy, vAllMembersSubset );
+ENDIF;
+SubsetCreatebyMDX ( vAllMembersSubset, vAllMembersMDX, 1 );
+
+vTotalMembers = HierarchySubsetGetSize ( pDimension, vApprovalHierarchy, vAllMembersSubset );
+vIdx = 1;
+vDuplicateFound = 0;
+vDuplicateElement = '';
+
+WHILE ( vIdx <= vTotalMembers );
+    vCurrentElem = HierarchySubsetGetElementName ( pDimension, vApprovalHierarchy, vAllMembersSubset, vIdx );
+    
+    # Check if element already exists in control dimension
+    IF ( DIMIX ( vControlDim, vCurrentElem ) > 0 );
+        # Duplicate found
+        vDuplicateFound = 1;
+        vDuplicateElement = vCurrentElem;
+        # Exit loop early
+        vIdx = vTotalMembers + 1;
+    ELSE;
+        # Add element to control dimension to mark as seen
+        DimensionElementInsert ( vControlDim, '', vCurrentElem, 'N' );
+    ENDIF;
+    
+    vIdx = vIdx + 1;
+END;
+
+# Clean up control dimension and subset
+IF ( DimensionExists ( vControlDim ) = 1 );
+    DimensionDestroy ( vControlDim );
+ENDIF;
+IF ( HierarchySubsetExists ( pDimension, vApprovalHierarchy, vAllMembersSubset ) = 1);
+    HierarchySubsetDestroy ( pDimension, vApprovalHierarchy, vAllMembersSubset );
+ENDIF;
+
+# Report duplicate if found
+IF ( vDuplicateFound = 1 );
+    sMessage = 'Duplicate element found in hierarchy: "' | vDuplicateElement | '". Each element must appear only once in a valid responsibility hierarchy.';
+    ItemReject( sMessage );
+ENDIF;
+
+#endregion

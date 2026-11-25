@@ -1,0 +1,336 @@
+{
+	"@type":"Hierarchy",
+	"Name":"Region",
+	"Elements":
+	[
+		{
+			"Name":"United States",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"North America",
+			"Type":"Consolidated"
+		},
+		{
+			"Name":"Americas",
+			"Type":"Consolidated"
+		},
+		{
+			"Name":"Global",
+			"Type":"Consolidated"
+		},
+		{
+			"Name":"Canada",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Mexico",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Brazil",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Latin America",
+			"Type":"Consolidated"
+		},
+		{
+			"Name":"Argentina",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Colombia",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"United Kingdom",
+			"Type":"Consolidated"
+		},
+		{
+			"Name":"Western Europe",
+			"Type":"Consolidated"
+		},
+		{
+			"Name":"EMEA",
+			"Type":"Consolidated"
+		},
+		{
+			"Name":"Germany",
+			"Type":"Consolidated"
+		},
+		{
+			"Name":"France",
+			"Type":"Consolidated"
+		},
+		{
+			"Name":"Netherlands",
+			"Type":"Consolidated"
+		},
+		{
+			"Name":"Spain",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Poland",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Central & Eastern Europe",
+			"Type":"Consolidated"
+		},
+		{
+			"Name":"Czech Republic",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"UAE",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Middle East & Africa",
+			"Type":"Consolidated"
+		},
+		{
+			"Name":"Saudi Arabia",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"South Africa",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Japan",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Northeast Asia",
+			"Type":"Consolidated"
+		},
+		{
+			"Name":"APAC",
+			"Type":"Consolidated"
+		},
+		{
+			"Name":"South Korea",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"China",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"India",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"South & Southeast Asia",
+			"Type":"Consolidated"
+		},
+		{
+			"Name":"Singapore",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Australia",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Indonesia",
+			"Type":"Numeric"
+		}
+	],
+	"Edges":
+	[
+		{
+			"ParentName":"North America",
+			"ComponentName":"United States",
+			"Weight":1
+		},
+		{
+			"ParentName":"North America",
+			"ComponentName":"Canada",
+			"Weight":1
+		},
+		{
+			"ParentName":"North America",
+			"ComponentName":"Mexico",
+			"Weight":1
+		},
+		{
+			"ParentName":"Americas",
+			"ComponentName":"North America",
+			"Weight":1
+		},
+		{
+			"ParentName":"Americas",
+			"ComponentName":"Latin America",
+			"Weight":1
+		},
+		{
+			"ParentName":"Global",
+			"ComponentName":"Americas",
+			"Weight":1
+		},
+		{
+			"ParentName":"Global",
+			"ComponentName":"EMEA",
+			"Weight":1
+		},
+		{
+			"ParentName":"Global",
+			"ComponentName":"APAC",
+			"Weight":1
+		},
+		{
+			"ParentName":"Latin America",
+			"ComponentName":"Brazil",
+			"Weight":1
+		},
+		{
+			"ParentName":"Latin America",
+			"ComponentName":"Argentina",
+			"Weight":1
+		},
+		{
+			"ParentName":"Latin America",
+			"ComponentName":"Colombia",
+			"Weight":1
+		},
+		{
+			"ParentName":"United Kingdom",
+			"ComponentName":"Germany",
+			"Weight":1
+		},
+		{
+			"ParentName":"Western Europe",
+			"ComponentName":"United Kingdom",
+			"Weight":1
+		},
+		{
+			"ParentName":"EMEA",
+			"ComponentName":"Western Europe",
+			"Weight":1
+		},
+		{
+			"ParentName":"EMEA",
+			"ComponentName":"United Kingdom",
+			"Weight":1
+		},
+		{
+			"ParentName":"EMEA",
+			"ComponentName":"Germany",
+			"Weight":1
+		},
+		{
+			"ParentName":"EMEA",
+			"ComponentName":"France",
+			"Weight":1
+		},
+		{
+			"ParentName":"EMEA",
+			"ComponentName":"Netherlands",
+			"Weight":1
+		},
+		{
+			"ParentName":"EMEA",
+			"ComponentName":"Central & Eastern Europe",
+			"Weight":1
+		},
+		{
+			"ParentName":"EMEA",
+			"ComponentName":"Middle East & Africa",
+			"Weight":1
+		},
+		{
+			"ParentName":"Germany",
+			"ComponentName":"France",
+			"Weight":1
+		},
+		{
+			"ParentName":"France",
+			"ComponentName":"Netherlands",
+			"Weight":1
+		},
+		{
+			"ParentName":"Netherlands",
+			"ComponentName":"Spain",
+			"Weight":1
+		},
+		{
+			"ParentName":"Central & Eastern Europe",
+			"ComponentName":"Poland",
+			"Weight":1
+		},
+		{
+			"ParentName":"Central & Eastern Europe",
+			"ComponentName":"Czech Republic",
+			"Weight":1
+		},
+		{
+			"ParentName":"Middle East & Africa",
+			"ComponentName":"UAE",
+			"Weight":1
+		},
+		{
+			"ParentName":"Middle East & Africa",
+			"ComponentName":"Saudi Arabia",
+			"Weight":1
+		},
+		{
+			"ParentName":"Middle East & Africa",
+			"ComponentName":"South Africa",
+			"Weight":1
+		},
+		{
+			"ParentName":"Northeast Asia",
+			"ComponentName":"Japan",
+			"Weight":1
+		},
+		{
+			"ParentName":"Northeast Asia",
+			"ComponentName":"South Korea",
+			"Weight":1
+		},
+		{
+			"ParentName":"Northeast Asia",
+			"ComponentName":"China",
+			"Weight":1
+		},
+		{
+			"ParentName":"APAC",
+			"ComponentName":"Northeast Asia",
+			"Weight":1
+		},
+		{
+			"ParentName":"APAC",
+			"ComponentName":"South & Southeast Asia",
+			"Weight":1
+		},
+		{
+			"ParentName":"South & Southeast Asia",
+			"ComponentName":"India",
+			"Weight":1
+		},
+		{
+			"ParentName":"South & Southeast Asia",
+			"ComponentName":"Singapore",
+			"Weight":1
+		},
+		{
+			"ParentName":"South & Southeast Asia",
+			"ComponentName":"Australia",
+			"Weight":1
+		},
+		{
+			"ParentName":"South & Southeast Asia",
+			"ComponentName":"Indonesia",
+			"Weight":1
+		}
+	],
+	"Subsets@Code.links":
+	[
+		"Region.subsets/Region Detail.json",
+		"Region.subsets/Region North America.json"
+	]
+}

@@ -1,0 +1,41 @@
+{
+	"@type":"MDXView",
+	"Name":"YearVariance_NetInterestIncome_View",
+	"MDX@Code.link":"YearVariance_NetInterestIncome_View.mdx",
+	"Meta": {
+		"Aliases": {},
+		"ExpandAboves": {
+			"[Region].[Region]": false,
+			"[Time Period].[Time Period]": false,
+			"[Measures].[Measures]": false,
+			"[Products and Services].[Products and Services]": false,
+			"[Clients and Segments].[Clients and Segments]": false
+		},
+		"ContextSets": {
+			"[Region].[Region]": {
+				"Expression": "{[Region].[Region].MEMBERS}"
+			},
+			"[Products and Services].[Products and Services]": {
+				"Expression": "{[Products and Services].[Products and Services].MEMBERS}"
+			},
+			"[Clients and Segments].[Clients and Segments]": {
+				"Expression": "{[Clients and Segments].[Clients and Segments].MEMBERS}"
+			}
+		},
+		"CalculatedMembers": {
+			"[Measures].[Measures]": [
+				{
+					"MemberID": "[Measures].[Measures].[YearVariance]",
+					"Caption": "YearVariance",
+					"InsertionPosition": "AFTER"
+				}
+			]
+		}
+	},
+	"ViewExtractSkipRuleValues": false,
+	"ViewExtractSkipConsolidatedValues": true,
+	"ViewExtractSkipZeroes": true,
+	"IsSuppressComputeOnOpen": false,
+	"IsAutocalculate": true,
+	"IsDeferComputeOnLeafDataEntry": false
+}

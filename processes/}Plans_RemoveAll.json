@@ -1,0 +1,22 @@
+{
+	"@type":"Process",
+	"Name":"}Plans_RemoveAll",
+	"HasSecurityAccess":false,
+	"Code@Code.link":"}Plans_RemoveAll.ti",
+	"DataSource":
+	{
+		"Type":"None"
+	},
+	"Parameters":
+	[
+		{
+			"Name":"pPrefix",
+			"Prompt":"",
+			"Value":"}Plans_",
+			"Type":"String"
+		}
+	],
+	"Variables":[],
+	"UIData": "_ParameterConstraints=e30=\f",
+	"VariablesUIData": []
+}

@@ -1,0 +1,6 @@
+{
+	"@type":"Subset",
+	"Name":"Total Products and Services",
+	"Alias":"MEMBER_NAME",
+	"Expression":"TM1IGNORE_BADTUPLES {[Clients and Segments].[Clients and Segments].MEMBERS}"
+}

@@ -1,0 +1,36 @@
+{
+	"@type":"MDXView",
+	"Name":"Revenue Planning View",
+	"MDX@Code.link":"Revenue Planning View.mdx",
+	"Meta": {
+		"Aliases": {},
+		"ExpandAboves": {
+			"[Region].[Region]": false,
+			"[Time Period].[Time Period]": false,
+			"[Measures].[Measures]": false,
+			"[Products and Services].[Products and Services]": false,
+			"[Version].[Version]": false,
+			"[Clients and Segments].[Clients and Segments]": false
+		},
+		"ContextSets": {
+			"[Region].[Region]": {
+				"Expression": "{[Region].[Region].MEMBERS}"
+			},
+			"[Time Period].[Time Period]": {
+				"Expression": "{[Time Period].[Time Period].[level000].MEMBERS}"
+			},
+			"[Measures].[Measures]": {
+				"Expression": "{[Measures].[Measures].MEMBERS}"
+			},
+			"[Clients and Segments].[Clients and Segments]": {
+				"Expression": "{[Clients and Segments].[Clients and Segments].MEMBERS}"
+			}
+		}
+	},
+	"ViewExtractSkipRuleValues": false,
+	"ViewExtractSkipConsolidatedValues": true,
+	"ViewExtractSkipZeroes": true,
+	"IsSuppressComputeOnOpen": false,
+	"IsAutocalculate": true,
+	"IsDeferComputeOnLeafDataEntry": false
+}

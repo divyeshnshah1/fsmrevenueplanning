@@ -1,0 +1,33 @@
+{
+	"@type":"Cube",
+	"Name":"Revenue Planning",
+	"Dimensions":
+	[
+		{
+			"@id":"Dimensions('Region')"
+		},
+		{
+			"@id":"Dimensions('Products and Services')"
+		},
+		{
+			"@id":"Dimensions('Clients and Segments')"
+		},
+		{
+			"@id":"Dimensions('Time Period')"
+		},
+		{
+			"@id":"Dimensions('Version')"
+		},
+		{
+			"@id":"Dimensions('Measures')"
+		}
+	],
+	"Views@Code.links":
+	[
+		"Revenue Planning.views/Revenue_NII_Commentary.json",
+		"Revenue Planning.views/Revenue Planning Leaf Level.json",
+		"Revenue Planning.views/Revenue Planning View.json",
+		"Revenue Planning.views/Revenue Planning View V2.json",
+		"Revenue Planning.views/YearVariance_NetInterestIncome_View.json"
+	]
+}

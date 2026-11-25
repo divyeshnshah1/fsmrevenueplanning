@@ -1,0 +1,66 @@
+{
+	"@type":"Process",
+	"Name":"Load Macro Drivers for Actuals",
+	"HasSecurityAccess":false,
+	"Code@Code.link":"Load Macro Drivers for Actuals.ti",
+	"DataSource":
+	{
+		"Type":"ASCII",
+		"dataSourceNameForServer":"Macro_Economic_Variables_Actuals_load.csv",
+		"dataSourceNameForClient":"",
+		"asciiHeaderRecords":1,
+		"asciiQuoteCharacter":"\"",
+		"asciiDecimalSeparator":".",
+		"asciiThousandSeparator":",",
+		"asciiDelimiterType":"Character",
+		"asciiDelimiterChar":","
+	},
+	"Parameters":
+	[
+		{
+			"Name":"pResult",
+			"Prompt":"Import count result file",
+			"Value":"",
+			"Type":"String"
+		}
+	],
+	"Variables":
+	[
+		{
+			"Name":"Region",
+			"Type":"String",
+			"Position":1,
+			"StartByte":0,
+			"EndByte":0
+		},
+		{
+			"Name":"Time_Period",
+			"Type":"String",
+			"Position":2,
+			"StartByte":0,
+			"EndByte":0
+		},
+		{
+			"Name":"Version",
+			"Type":"String",
+			"Position":3,
+			"StartByte":0,
+			"EndByte":0
+		},
+		{
+			"Name":"Macro_and_Micro_Drivers",
+			"Type":"String",
+			"Position":4,
+			"StartByte":0,
+			"EndByte":0
+		},
+		{
+			"Name":"Value",
+			"Type":"String",
+			"Position":5,
+			"StartByte":0,
+			"EndByte":0
+		}
+	],
+	"UIData": "{\"MappingType\":\"data\",\"Cube\":\"Macro Economic Variables\",\"DataReset\":\"none\",\"DataResetView\":\"\",\"AddOrReplace\":false,\"Skips\":\"true,true,true\",\"Mappings\":[{\"id\":\"col0\",\"SourceType\":\"column\",\"Name\":\"Region\",\"Type\":\"String\",\"Content\":\"element\",\"Qualifier\":\"level0\",\"Dimension\":\"Region\"},{\"id\":\"col1\",\"SourceType\":\"column\",\"Name\":\"Time_Period\",\"Type\":\"String\",\"Content\":\"element\",\"Qualifier\":\"level0\",\"Dimension\":\"Time Period\"},{\"id\":\"col2\",\"SourceType\":\"column\",\"Name\":\"Version\",\"Type\":\"String\",\"Content\":\"element\",\"Qualifier\":\"level0\",\"Dimension\":\"Version\"},{\"id\":\"col3\",\"SourceType\":\"column\",\"Name\":\"Macro_and_Micro_Drivers\",\"Type\":\"String\",\"Content\":\"element\",\"Qualifier\":\"level0\",\"Dimension\":\"Macro and Micro Drivers\",\"PriorType\":\"String\"},{\"id\":\"col4\",\"SourceType\":\"column\",\"Name\":\"Value\",\"Type\":\"Numeric\",\"Content\":\"data\",\"PriorType\":\"String\"}]}"
+}

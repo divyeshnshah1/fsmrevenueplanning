@@ -1,0 +1,614 @@
+{
+	"@type":"Hierarchy",
+	"Name":"Clients and Segments",
+	"Elements":
+	[
+		{
+			"Name":"Apple",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Global Top-Tier Blue-Chip",
+			"Type":"Consolidated"
+		},
+		{
+			"Name":"Technology & E-Commerce",
+			"Type":"Consolidated"
+		},
+		{
+			"Name":"Multinational Corporations (MNCs)",
+			"Type":"Consolidated"
+		},
+		{
+			"Name":"Institutional Clients",
+			"Type":"Consolidated"
+		},
+		{
+			"Name":"Total Clients",
+			"Type":"Consolidated"
+		},
+		{
+			"Name":"Amazon",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Alphabet",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Microsoft",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"ExxonMobil",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Global Supermajors",
+			"Type":"Consolidated"
+		},
+		{
+			"Name":"Energy & Power Conglomerates",
+			"Type":"Consolidated"
+		},
+		{
+			"Name":"Chevron",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Shell",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Totalenergies",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Blackstone Group",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Global Buyout Platforms",
+			"Type":"Consolidated"
+		},
+		{
+			"Name":"Private Equity & LBO Shops",
+			"Type":"Consolidated"
+		},
+		{
+			"Name":"Financial Institutions & Investors",
+			"Type":"Consolidated"
+		},
+		{
+			"Name":"KKR",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Carlyle Group",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Brookfield",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Nestle",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Global Scale Enterprises",
+			"Type":"Consolidated"
+		},
+		{
+			"Name":"Consumer Goods & Automotive",
+			"Type":"Consolidated"
+		},
+		{
+			"Name":"Procter & Gamble",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Toyota",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Volkswagen",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"BlackRock",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Mega-Scale Asset Gatherers",
+			"Type":"Consolidated"
+		},
+		{
+			"Name":"Asset Managers & Mutual Funds",
+			"Type":"Consolidated"
+		},
+		{
+			"Name":"Vanguard",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Fidelity Investments",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"PIMCO",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Millennium Management",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"High-Volume Multi-Strategy",
+			"Type":"Consolidated"
+		},
+		{
+			"Name":"Alternative Vehicles & Hedge Funds",
+			"Type":"Consolidated"
+		},
+		{
+			"Name":"Citadel",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Point72",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Federal Reserve System",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"National Monetary Authorities",
+			"Type":"Consolidated"
+		},
+		{
+			"Name":"Central Banks & Monies",
+			"Type":"Consolidated"
+		},
+		{
+			"Name":"Public Sector & Sovereigns",
+			"Type":"Consolidated"
+		},
+		{
+			"Name":"European Central Bank",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Bank of Japan",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"State-Owned Investment Pools",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Sovereign Wealth Funds (SWFs)",
+			"Type":"Consolidated"
+		},
+		{
+			"Name":"Fast-Growing Globalizing Companies",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Mid-Market Corporate",
+			"Type":"Consolidated"
+		},
+		{
+			"Name":"Commercial Banking",
+			"Type":"Consolidated"
+		},
+		{
+			"Name":"Main Street Checking & Savings",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"U.S. Retail Consumers",
+			"Type":"Consolidated"
+		},
+		{
+			"Name":"U.S. Personal Banking (USPB)",
+			"Type":"Consolidated"
+		},
+		{
+			"Name":"Personal & Wealth Clients",
+			"Type":"Consolidated"
+		},
+		{
+			"Name":"Proprietary Core Cardmembers",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Citi Branded Cards",
+			"Type":"Consolidated"
+		},
+		{
+			"Name":"Private-Label Co-Branded Partners",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Retail Services",
+			"Type":"Consolidated"
+		},
+		{
+			"Name":"Citi Priority Accounts",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Affluent Tiers",
+			"Type":"Consolidated"
+		},
+		{
+			"Name":"Wealth Management",
+			"Type":"Consolidated"
+		},
+		{
+			"Name":"Citi Private Client",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"High-Net-Worth (HNW)",
+			"Type":"Consolidated"
+		},
+		{
+			"Name":"Citi Private Bank Clients",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Ultra-High-Net-Worth (UHNW)",
+			"Type":"Consolidated"
+		},
+		{
+			"Name":"Single & Multi-Family Institutional Desks",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Family Office Entities",
+			"Type":"Consolidated"
+		}
+	],
+	"Edges":
+	[
+		{
+			"ParentName":"Global Top-Tier Blue-Chip",
+			"ComponentName":"Apple",
+			"Weight":1
+		},
+		{
+			"ParentName":"Global Top-Tier Blue-Chip",
+			"ComponentName":"Amazon",
+			"Weight":1
+		},
+		{
+			"ParentName":"Global Top-Tier Blue-Chip",
+			"ComponentName":"Alphabet",
+			"Weight":1
+		},
+		{
+			"ParentName":"Global Top-Tier Blue-Chip",
+			"ComponentName":"Microsoft",
+			"Weight":1
+		},
+		{
+			"ParentName":"Technology & E-Commerce",
+			"ComponentName":"Global Top-Tier Blue-Chip",
+			"Weight":1
+		},
+		{
+			"ParentName":"Multinational Corporations (MNCs)",
+			"ComponentName":"Technology & E-Commerce",
+			"Weight":1
+		},
+		{
+			"ParentName":"Multinational Corporations (MNCs)",
+			"ComponentName":"Energy & Power Conglomerates",
+			"Weight":1
+		},
+		{
+			"ParentName":"Multinational Corporations (MNCs)",
+			"ComponentName":"Consumer Goods & Automotive",
+			"Weight":1
+		},
+		{
+			"ParentName":"Institutional Clients",
+			"ComponentName":"Multinational Corporations (MNCs)",
+			"Weight":1
+		},
+		{
+			"ParentName":"Institutional Clients",
+			"ComponentName":"Financial Institutions & Investors",
+			"Weight":1
+		},
+		{
+			"ParentName":"Institutional Clients",
+			"ComponentName":"Public Sector & Sovereigns",
+			"Weight":1
+		},
+		{
+			"ParentName":"Institutional Clients",
+			"ComponentName":"Commercial Banking",
+			"Weight":1
+		},
+		{
+			"ParentName":"Total Clients",
+			"ComponentName":"Institutional Clients",
+			"Weight":1
+		},
+		{
+			"ParentName":"Total Clients",
+			"ComponentName":"Personal & Wealth Clients",
+			"Weight":1
+		},
+		{
+			"ParentName":"Global Supermajors",
+			"ComponentName":"ExxonMobil",
+			"Weight":1
+		},
+		{
+			"ParentName":"Global Supermajors",
+			"ComponentName":"Chevron",
+			"Weight":1
+		},
+		{
+			"ParentName":"Global Supermajors",
+			"ComponentName":"Shell",
+			"Weight":1
+		},
+		{
+			"ParentName":"Global Supermajors",
+			"ComponentName":"Totalenergies",
+			"Weight":1
+		},
+		{
+			"ParentName":"Energy & Power Conglomerates",
+			"ComponentName":"Global Supermajors",
+			"Weight":1
+		},
+		{
+			"ParentName":"Global Buyout Platforms",
+			"ComponentName":"Blackstone Group",
+			"Weight":1
+		},
+		{
+			"ParentName":"Global Buyout Platforms",
+			"ComponentName":"KKR",
+			"Weight":1
+		},
+		{
+			"ParentName":"Global Buyout Platforms",
+			"ComponentName":"Carlyle Group",
+			"Weight":1
+		},
+		{
+			"ParentName":"Global Buyout Platforms",
+			"ComponentName":"Brookfield",
+			"Weight":1
+		},
+		{
+			"ParentName":"Private Equity & LBO Shops",
+			"ComponentName":"Global Buyout Platforms",
+			"Weight":1
+		},
+		{
+			"ParentName":"Financial Institutions & Investors",
+			"ComponentName":"Private Equity & LBO Shops",
+			"Weight":1
+		},
+		{
+			"ParentName":"Financial Institutions & Investors",
+			"ComponentName":"Asset Managers & Mutual Funds",
+			"Weight":1
+		},
+		{
+			"ParentName":"Financial Institutions & Investors",
+			"ComponentName":"Alternative Vehicles & Hedge Funds",
+			"Weight":1
+		},
+		{
+			"ParentName":"Global Scale Enterprises",
+			"ComponentName":"Nestle",
+			"Weight":1
+		},
+		{
+			"ParentName":"Global Scale Enterprises",
+			"ComponentName":"Procter & Gamble",
+			"Weight":1
+		},
+		{
+			"ParentName":"Global Scale Enterprises",
+			"ComponentName":"Toyota",
+			"Weight":1
+		},
+		{
+			"ParentName":"Global Scale Enterprises",
+			"ComponentName":"Volkswagen",
+			"Weight":1
+		},
+		{
+			"ParentName":"Consumer Goods & Automotive",
+			"ComponentName":"Global Scale Enterprises",
+			"Weight":1
+		},
+		{
+			"ParentName":"Mega-Scale Asset Gatherers",
+			"ComponentName":"BlackRock",
+			"Weight":1
+		},
+		{
+			"ParentName":"Mega-Scale Asset Gatherers",
+			"ComponentName":"Vanguard",
+			"Weight":1
+		},
+		{
+			"ParentName":"Mega-Scale Asset Gatherers",
+			"ComponentName":"Fidelity Investments",
+			"Weight":1
+		},
+		{
+			"ParentName":"Mega-Scale Asset Gatherers",
+			"ComponentName":"PIMCO",
+			"Weight":1
+		},
+		{
+			"ParentName":"Asset Managers & Mutual Funds",
+			"ComponentName":"Mega-Scale Asset Gatherers",
+			"Weight":1
+		},
+		{
+			"ParentName":"High-Volume Multi-Strategy",
+			"ComponentName":"Millennium Management",
+			"Weight":1
+		},
+		{
+			"ParentName":"High-Volume Multi-Strategy",
+			"ComponentName":"Citadel",
+			"Weight":1
+		},
+		{
+			"ParentName":"High-Volume Multi-Strategy",
+			"ComponentName":"Point72",
+			"Weight":1
+		},
+		{
+			"ParentName":"Alternative Vehicles & Hedge Funds",
+			"ComponentName":"High-Volume Multi-Strategy",
+			"Weight":1
+		},
+		{
+			"ParentName":"National Monetary Authorities",
+			"ComponentName":"Federal Reserve System",
+			"Weight":1
+		},
+		{
+			"ParentName":"National Monetary Authorities",
+			"ComponentName":"European Central Bank",
+			"Weight":1
+		},
+		{
+			"ParentName":"National Monetary Authorities",
+			"ComponentName":"Bank of Japan",
+			"Weight":1
+		},
+		{
+			"ParentName":"Central Banks & Monies",
+			"ComponentName":"National Monetary Authorities",
+			"Weight":1
+		},
+		{
+			"ParentName":"Public Sector & Sovereigns",
+			"ComponentName":"Central Banks & Monies",
+			"Weight":1
+		},
+		{
+			"ParentName":"Public Sector & Sovereigns",
+			"ComponentName":"Sovereign Wealth Funds (SWFs)",
+			"Weight":1
+		},
+		{
+			"ParentName":"Sovereign Wealth Funds (SWFs)",
+			"ComponentName":"State-Owned Investment Pools",
+			"Weight":1
+		},
+		{
+			"ParentName":"Mid-Market Corporate",
+			"ComponentName":"Fast-Growing Globalizing Companies",
+			"Weight":1
+		},
+		{
+			"ParentName":"Commercial Banking",
+			"ComponentName":"Mid-Market Corporate",
+			"Weight":1
+		},
+		{
+			"ParentName":"U.S. Retail Consumers",
+			"ComponentName":"Main Street Checking & Savings",
+			"Weight":1
+		},
+		{
+			"ParentName":"U.S. Personal Banking (USPB)",
+			"ComponentName":"U.S. Retail Consumers",
+			"Weight":1
+		},
+		{
+			"ParentName":"U.S. Personal Banking (USPB)",
+			"ComponentName":"Citi Branded Cards",
+			"Weight":1
+		},
+		{
+			"ParentName":"U.S. Personal Banking (USPB)",
+			"ComponentName":"Retail Services",
+			"Weight":1
+		},
+		{
+			"ParentName":"Personal & Wealth Clients",
+			"ComponentName":"U.S. Personal Banking (USPB)",
+			"Weight":1
+		},
+		{
+			"ParentName":"Personal & Wealth Clients",
+			"ComponentName":"Wealth Management",
+			"Weight":1
+		},
+		{
+			"ParentName":"Citi Branded Cards",
+			"ComponentName":"Proprietary Core Cardmembers",
+			"Weight":1
+		},
+		{
+			"ParentName":"Retail Services",
+			"ComponentName":"Private-Label Co-Branded Partners",
+			"Weight":1
+		},
+		{
+			"ParentName":"Affluent Tiers",
+			"ComponentName":"Citi Priority Accounts",
+			"Weight":1
+		},
+		{
+			"ParentName":"Wealth Management",
+			"ComponentName":"Affluent Tiers",
+			"Weight":1
+		},
+		{
+			"ParentName":"Wealth Management",
+			"ComponentName":"High-Net-Worth (HNW)",
+			"Weight":1
+		},
+		{
+			"ParentName":"Wealth Management",
+			"ComponentName":"Ultra-High-Net-Worth (UHNW)",
+			"Weight":1
+		},
+		{
+			"ParentName":"Wealth Management",
+			"ComponentName":"Family Office Entities",
+			"Weight":1
+		},
+		{
+			"ParentName":"High-Net-Worth (HNW)",
+			"ComponentName":"Citi Private Client",
+			"Weight":1
+		},
+		{
+			"ParentName":"Ultra-High-Net-Worth (UHNW)",
+			"ComponentName":"Citi Private Bank Clients",
+			"Weight":1
+		},
+		{
+			"ParentName":"Family Office Entities",
+			"ComponentName":"Single & Multi-Family Institutional Desks",
+			"Weight":1
+		}
+	],
+	"Subsets@Code.links":
+	[
+		"Clients and Segments.subsets/Clients Detail.json",
+		"Clients and Segments.subsets/Total Clients and Segments.json",
+		"Clients and Segments.subsets/Total Products and Services.json"
+	]
+}

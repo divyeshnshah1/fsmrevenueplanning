@@ -1,0 +1,36 @@
+{
+	"@type":"MDXView",
+	"Name":"Revenue_NII_Commentary",
+	"MDX@Code.link":"Revenue_NII_Commentary.mdx",
+	"Meta": {
+		"Aliases": {},
+		"ExpandAboves": {
+			"[Region].[Region]": false,
+			"[Measures].[Measures]": false,
+			"[Time Period].[Time Period]": false,
+			"[Products and Services].[Products and Services]": false,
+			"[Version].[Version]": false,
+			"[Clients and Segments].[Clients and Segments]": false
+		},
+		"ContextSets": {
+			"[Region].[Region]": {
+				"Expression": "{[Region].[Region].MEMBERS}"
+			},
+			"[Time Period].[Time Period]": {
+				"Expression": "{[Time Period].[Time Period].MEMBERS}"
+			},
+			"[Products and Services].[Products and Services]": {
+				"Expression": "{[Products and Services].[Products and Services].MEMBERS}"
+			},
+			"[Clients and Segments].[Clients and Segments]": {
+				"Expression": "{[Clients and Segments].[Clients and Segments].MEMBERS}"
+			}
+		}
+	},
+	"ViewExtractSkipRuleValues": false,
+	"ViewExtractSkipConsolidatedValues": true,
+	"ViewExtractSkipZeroes": true,
+	"IsSuppressComputeOnOpen": false,
+	"IsAutocalculate": true,
+	"IsDeferComputeOnLeafDataEntry": false
+}

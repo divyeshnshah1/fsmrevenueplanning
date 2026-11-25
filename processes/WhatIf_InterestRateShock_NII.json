@@ -1,0 +1,28 @@
+{
+	"@type":"Process",
+	"Name":"WhatIf_InterestRateShock_NII",
+	"HasSecurityAccess":false,
+	"Code@Code.link":"WhatIf_InterestRateShock_NII.ti",
+	"DataSource":
+	{
+		"Type":"None"
+	},
+	"Parameters":
+	[
+		{
+			"Name":"pRateShock",
+			"Prompt":"Interest Rate Shock decimal",
+			"Value":-0.0050000000000000001,
+			"Type":"Numeric"
+		},
+		{
+			"Name":"pNIMSensitivity",
+			"Prompt":"NIM Sensitivity Factor",
+			"Value":0.849999999999999978,
+			"Type":"Numeric"
+		}
+	],
+	"Variables":[],
+	"UIData": "",
+	"VariablesUIData": []
+}

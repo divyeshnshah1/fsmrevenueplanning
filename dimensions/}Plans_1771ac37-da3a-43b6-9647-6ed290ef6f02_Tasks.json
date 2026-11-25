@@ -1,0 +1,12 @@
+{
+	"@type":"Dimension",
+	"Name":"}Plans_1771ac37-da3a-43b6-9647-6ed290ef6f02_Tasks",
+	"Hierarchies@Code.links":
+	[
+		"}Plans_1771ac37-da3a-43b6-9647-6ed290ef6f02_Tasks.hierarchies/}Plans_1771ac37-da3a-43b6-9647-6ed290ef6f02_Tasks.json"
+	],
+	"DefaultHierarchy":
+	{
+		"@id":"Dimensions('}Plans_1771ac37-da3a-43b6-9647-6ed290ef6f02_Tasks')/Hierarchies('}Plans_1771ac37-da3a-43b6-9647-6ed290ef6f02_Tasks')"
+	}
+}

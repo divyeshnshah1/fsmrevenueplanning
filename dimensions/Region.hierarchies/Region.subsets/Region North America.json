@@ -1,0 +1,20 @@
+{
+	"@type":"Subset",
+	"Name":"Region North America",
+	"Alias":"MEMBER_NAME",
+	"Elements":
+	[
+		{
+			"@id":"Dimensions('Region')/Hierarchies('Region')/Elements('North America')"
+		},
+		{
+			"@id":"Dimensions('Region')/Hierarchies('Region')/Elements('United States')"
+		},
+		{
+			"@id":"Dimensions('Region')/Hierarchies('Region')/Elements('Canada')"
+		},
+		{
+			"@id":"Dimensions('Region')/Hierarchies('Region')/Elements('Mexico')"
+		}
+	]
+}

@@ -1,0 +1,6 @@
+{
+	"@type":"Subset",
+	"Name":"Region Detail",
+	"Alias":"MEMBER_NAME",
+	"Expression":"TM1IGNORE_BADTUPLES {TM1FILTERBYLEVEL(TM1SUBSETALL([Region].[Region]) , 0)}"
+}

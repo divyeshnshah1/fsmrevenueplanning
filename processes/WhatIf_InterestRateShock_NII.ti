@@ -1,0 +1,91 @@
+#region Epilog
+
+vRateShock = pRateShock;
+vNIMSensitivity = pNIMSensitivity;
+
+vRegion1 = 'United States'; vRegion2 = 'Canada'; vRegion3 = 'United Kingdom';
+vRegion4 = 'Germany'; vRegion5 = 'France'; vRegion6 = 'China';
+vRegion7 = 'Japan'; vRegion8 = 'Australia'; vRegion9 = 'South Korea';
+vRegion10 = 'Singapore'; vRegion11 = 'Brazil'; vRegion12 = 'South Africa';
+
+vProd1 = 'Liquidity & Cash Management';
+vProd2 = 'Payments & Receivables';
+vProd3 = 'Trade & Supply Chain Finance';
+vProd4 = 'Balance Sheet Loans';
+vProd5 = 'Macro Trading (FX & Rates)';
+
+vPeriod1 = 'Jan 2025'; vPeriod2 = 'Feb 2025'; vPeriod3 = 'Mar 2025';
+vPeriod4 = 'Apr 2025'; vPeriod5 = 'May 2025'; vPeriod6 = 'Jun 2025';
+vPeriod7 = 'Jul 2025'; vPeriod8 = 'Aug 2025'; vPeriod9 = 'Sep 2025';
+vPeriod10 = 'Oct 2025'; vPeriod11 = 'Nov 2025'; vPeriod12 = 'Dec 2025';
+
+vClient1 = 'Apple'; vClient2 = 'Amazon'; vClient3 = 'Microsoft'; vClient4 = 'Alphabet';
+vClient5 = 'ExxonMobil'; vClient6 = 'Nestle'; vClient7 = 'Toyota'; vClient8 = 'BlackRock';
+
+nP = 12; nR = 12; nProd = 5; nC = 8;
+iP = 1;
+WHILE (iP <= nP);
+   IF (iP = 1); vPeriod = vPeriod1; ENDIF;
+   IF (iP = 2); vPeriod = vPeriod2; ENDIF;
+   IF (iP = 3); vPeriod = vPeriod3; ENDIF;
+   IF (iP = 4); vPeriod = vPeriod4; ENDIF;
+   IF (iP = 5); vPeriod = vPeriod5; ENDIF;
+   IF (iP = 6); vPeriod = vPeriod6; ENDIF;
+   IF (iP = 7); vPeriod = vPeriod7; ENDIF;
+   IF (iP = 8); vPeriod = vPeriod8; ENDIF;
+   IF (iP = 9); vPeriod = vPeriod9; ENDIF;
+   IF (iP = 10); vPeriod = vPeriod10; ENDIF;
+   IF (iP = 11); vPeriod = vPeriod11; ENDIF;
+   IF (iP = 12); vPeriod = vPeriod12; ENDIF;
+   iR = 1;
+   WHILE (iR <= nR);
+      IF (iR = 1); vRegion = vRegion1; ENDIF;
+      IF (iR = 2); vRegion = vRegion2; ENDIF;
+      IF (iR = 3); vRegion = vRegion3; ENDIF;
+      IF (iR = 4); vRegion = vRegion4; ENDIF;
+      IF (iR = 5); vRegion = vRegion5; ENDIF;
+      IF (iR = 6); vRegion = vRegion6; ENDIF;
+      IF (iR = 7); vRegion = vRegion7; ENDIF;
+      IF (iR = 8); vRegion = vRegion8; ENDIF;
+      IF (iR = 9); vRegion = vRegion9; ENDIF;
+      IF (iR = 10); vRegion = vRegion10; ENDIF;
+      IF (iR = 11); vRegion = vRegion11; ENDIF;
+      IF (iR = 12); vRegion = vRegion12; ENDIF;
+      iProd = 1;
+      WHILE (iProd <= nProd);
+         IF (iProd = 1); vProduct = vProd1; ENDIF;
+         IF (iProd = 2); vProduct = vProd2; ENDIF;
+         IF (iProd = 3); vProduct = vProd3; ENDIF;
+         IF (iProd = 4); vProduct = vProd4; ENDIF;
+         IF (iProd = 5); vProduct = vProd5; ENDIF;
+         iC = 1;
+         WHILE (iC <= nC);
+            IF (iC = 1); vClient = vClient1; ENDIF;
+            IF (iC = 2); vClient = vClient2; ENDIF;
+            IF (iC = 3); vClient = vClient3; ENDIF;
+            IF (iC = 4); vClient = vClient4; ENDIF;
+            IF (iC = 5); vClient = vClient5; ENDIF;
+            IF (iC = 6); vClient = vClient6; ENDIF;
+            IF (iC = 7); vClient = vClient7; ENDIF;
+            IF (iC = 8); vClient = vClient8; ENDIF;
+            vNII = CellGetN('Revenue Planning', vRegion, vProduct, vClient, vPeriod, 'Forecast', 'Net Interest Income');
+            IF (vNII <> 0);
+               vRate = CellGetN('Revenue Planning', vRegion, vProduct, vClient, vPeriod, 'Forecast', 'Interest Rates');
+               IF (vRate > 0);
+                  vImpact = (vRateShock / vRate) * vNIMSensitivity;
+               ELSE;
+                  vImpact = -0.035 * vNIMSensitivity;
+               ENDIF;
+               vNewNII = vNII * (1 + vImpact);
+               CellPutN(vNewNII, 'Revenue Planning', vRegion, vProduct, vClient, vPeriod, 'Forecast', 'Net Interest Income');
+            ENDIF;
+            iC = iC + 1;
+         ENDIWHILE;
+         iProd = iProd + 1;
+      ENDIWHILE;
+      iR = iR + 1;
+   ENDIWHILE;
+   iP = iP + 1;
+ENDIWHILE;
+
+#endregion

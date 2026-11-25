@@ -1,0 +1,35 @@
+#region Prolog
+
+# Script gets the first member from the specified task and calls }Plans_NodeReset process
+
+vPlanControlCube = pPrefix;
+vPlanApprovalDimension = pPrefix | '_' | pPlan | '_Approval';
+vPlanApprovalHierarchy = vPlanApprovalDimension;
+
+# Get the first member (node) from Approval dimension
+vFirstNode = '';
+IF ( DimensionExists( vPlanApprovalDimension ) = 1 );
+    vNodeCount = DimSiz( vPlanApprovalDimension );
+    IF ( vNodeCount > 0 );
+        vFirstNode = ElementName( vPlanApprovalDimension, vPlanApprovalHierarchy, 1 );
+    ENDIF;
+ENDIF;
+
+# Check if element was found
+IF ( vFirstNode @= '' );
+    RunProcess ( '}Plans_LogError',
+                'pPlan', pPlan,
+                'pTask', pTask,
+                'pMessage', 'No node found in dimension ' | vPlanApprovalDimension,
+                'pError', 'Error' );
+    ProcessError;
+ENDIF;
+
+# Call }Plans_NodeReset process with the first member
+ExecuteProcess ( '}Plans_NodeReset',
+                'pPlan', pPlan,
+                'pNode', vFirstNode,
+                'pTask', pTask,
+                'pPrefix', pPrefix );
+
+#endregion

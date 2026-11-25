@@ -1,0 +1,119 @@
+#region Prolog
+vNow           = TIMST (NOW(), '\Y-\m-\d \h:\i\:\s' );
+
+vPlanControlCube = pPrefix;
+vPlanTaskDimension = pPrefix | '_' | pPlan | '_Tasks';
+vPlanStateCube = pPrefix | '_' | pPlan | '_State';
+
+vPlanApprovalDimension = pPrefix | '_' | pPlan | '_Approval';
+vPlanApprovalHierarchy =vPlanApprovalDimension;
+vPlanApprovalSubset = 'Default';
+
+vPlanTaskDimension = pPrefix | '_' | pPlan | '_Tasks';
+
+subsetSize = HierarchySubsetGetSize ( vPlanApprovalDimension, vPlanApprovalHierarchy, vPlanApprovalSubset );
+vNodeIndex = 1;
+WHILE ( vNodeIndex <= subsetSize );
+    vNode = ElementName ( vPlanApprovalDimension, vPlanApprovalHierarchy, vNodeIndex );
+    vNodeState = CellGetS ( vPlanStateCube, vNode, pTask, 'State' );
+    # Nodes that were added when the approval hierarchy was updates will not have a status
+    IF ( vNodeState @= '' );
+        vElementType = ElementType ( vPlanApprovalDimension, vPlanApprovalHierarchy,vNode ); 
+        vElementParentCount = ElementParentCount ( vPlanApprovalDimension, vPlanApprovalHierarchy, vNode );
+        IF ( vElementType @= 'N' );    
+            # If the new node is a leaf we determine the new node state based on the parent node state
+            IF ( vElementParentCount = 1);
+                vParentNode = ElementParent ( vPlanApprovalDimension, vPlanApprovalHierarchy, vNode, 1 );
+                vParentNodeState = CellGetS ( vPlanStateCube, vParentNode, pTask, 'State' );
+                vParentNodeOwner = CellGetS ( vPlanStateCube, vParentNode, pTask, 'Owner' );
+                vParentNodeWorkspaceOwner = CellGetS ( vPlanStateCube, vParentNode, pTask, 'WorkspaceOwner' );
+                vParentTakeOwnershipNode = CellGetS ( vPlanStateCube, vParentNode, pTask, 'TakeOwnershipNode' );
+                
+                IF ( vParentNodeState @= '0' );
+                    CellPutS ( '0', vPlanStateCube, vNode, pTask, 'State' );
+                ELSEIF ( vParentNodeState @= '1' );
+                    CellPutS ( '0', vPlanStateCube, vNode, pTask, 'State' );
+                ELSEIF ( vParentNodeState @= '2' );
+                    CellPutS ( '2', vPlanStateCube, vNode, pTask, 'State' );
+                    CellPutS ( vParentNodeOwner, vPlanStateCube, vNode, pTask, 'Owner' );
+                    CellPutS ( vParentNodeWorkspaceOwner, vPlanStateCube, vNode, pTask, 'WorkspaceOwner' );
+                    CellPutS ( vParentTakeOwnershipNode, vPlanStateCube, vNode, pTask, 'TakeOwnershipNode' );
+                ELSEIF ( vParentNodeState @= '3' );
+                    CellPutS ( '2', vPlanStateCube, vNode, pTask, 'State' );
+                    CellPutS ( vParentNodeOwner, vPlanStateCube, vNode, pTask, 'Owner' );
+                    CellPutS ( vParentNodeWorkspaceOwner, vPlanStateCube, vNode, pTask, 'WorkspaceOwner' );
+                    CellPutS ( vParentTakeOwnershipNode, vPlanStateCube, vNode, pTask, 'TakeOwnershipNode' );
+                    ExecuteProcess ( '}Plans_SetNodeParentState',
+                    'pPlan', pPlan,
+                    'pTask', pTask,
+                    'pNode', vParentNode,
+                    'pState', vParentNodeState);
+                ELSEIF ( vParentNodeState @= '4' );
+                    CellPutS ( '2', vPlanStateCube, vNode, pTask, 'State' );
+                    CellPutS ( vParentNodeOwner, vPlanStateCube, vNode, pTask, 'Owner' );
+                    CellPutS ( vParentNodeWorkspaceOwner, vPlanStateCube, vNode, pTask, 'WorkspaceOwner' );
+                    CellPutS ( vParentTakeOwnershipNode, vPlanStateCube, vNode, pTask, 'TakeOwnershipNode' );
+                    ExecuteProcess ( '}Plans_SetNodeParentState',
+                    'pPlan', pPlan,
+                    'pTask', pTask,
+                    'pNode', vParentNode,
+                    'pState', vParentNodeState);
+                ENDIF;
+            ENDIF;
+        ELSEIF ( vElementType @= 'C' );
+            IF ( vElementParentCount = 1);
+                # New node is a consolidation that is a child of other consolidations
+                vParentNode = ElementParent ( vPlanApprovalDimension, vPlanApprovalHierarchy, vNode, 1 );
+                vParentNodeState = CellGetS ( vPlanStateCube, vParentNode, pTask, 'State' );
+                vParentNodeOwner = CellGetS ( vPlanStateCube, vParentNode, pTask, 'Owner' );
+                vParentNodeWorkspaceOwner = CellGetS ( vPlanStateCube, vParentNode, pTask, 'WorkspaceOwner' );
+                vParentTakeOwnershipNode = CellGetS ( vPlanStateCube, vParentNode, pTask, 'TakeOwnershipNode' );
+                
+                CellPutS ( vParentNodeState, vPlanStateCube, vNode, pTask, 'State' );
+                CellPutS ( vParentNodeOwner, vPlanStateCube, vNode, pTask, 'Owner' );
+                CellPutS ( vParentNodeWorkspaceOwner, vPlanStateCube, vNode, pTask, 'WorkspaceOwner' );
+                CellPutS ( vParentTakeOwnershipNode, vPlanStateCube, vNode, pTask, 'TakeOwnershipNode' );
+            ELSE;
+                # New node is a consolidation that is the top level node in the approval hierarchy
+                # We need to examine all children 
+                vChildCount = ElementComponentCount ( vPlanApprovalDimension, vPlanApprovalHierarchy, vNode );
+                vChildNodeIndex = 1;
+                vChildNodeAvailableCount = 0; 
+                vChildNodeInProgressCount = 0; 
+                vChildNodeReservedCount = 0; 
+                vChildNodePendingCount = 0; 
+                vChildNodeCompleteCount = 0; 
+                WHILE ( vChildNodeIndex <= vChildCount );
+                    vChildNode = ElementComponent ( vPlanApprovalDimension, vPlanApprovalHierarchy, vNode, vChildNodeIndex );
+                    vChildNodeState = CellGetS ( vPlanStateCube, vChildNode, pTask, 'State' );
+                    IF ( vChildNodeState @= '0' );
+                        vChildNodeAvailableCount = vChildNodeAvailableCount + 1;
+                    ELSEIF ( vChildNodeState @= '1' );
+                        vChildNodeInProgressCount = vChildNodeInProgressCount + 1;
+                    ELSEIF ( vChildNodeState @= '2' );
+                        vChildNodeReservedCount = vChildNodeReservedCount + 1;
+                    ELSEIF ( vChildNodeState @= '3' );
+                        vChildNodePendingCount = vChildNodePendingCount + 1;
+                    ELSEIF ( vChildNodeState @= '4' );
+                        vChildNodeCompleteCount = vChildNodeCompleteCount +1;
+                    ENDIF;
+                    vChildNodeIndex = vChildNodeIndex + 1;
+                END;
+                IF ( vChildCount = vChildNodeCompleteCount );
+                    CellPutS ( '4', vPlanStateCube, vNode, pTask, 'State' ); 
+                ELSEIF ( vChildCount = vChildNodePendingCount );
+                    CellPutS ( '3', vPlanStateCube, vNode, pTask, 'State' ); 
+                ELSEIF ( vChildCount = vChildNodeAvailableCount );
+                    CellPutS ( '0', vPlanStateCube, vNode, pTask, 'State' ); 
+                ELSE;
+                    CellPutS ( '1', vPlanStateCube, vNode, pTask, 'State' ); 
+                ENDIF;
+            ENDIF;
+        ENDIF;
+    ENDIF;
+    vNodeIndex = vNodeIndex + 1;
+END;
+
+
+
+#endregion

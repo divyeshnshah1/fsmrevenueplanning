@@ -1,0 +1,107 @@
+#region Prolog
+MinorErrorLogMax = -1;
+OnMinorErrorDoItemSkip = 1;
+SetInputCharacterSet('TM1CS_ISO_8859_1');
+vType='N';
+vWeight=1.0;
+If (DimensionExists('Clients and Segments') = 0);
+DimensionCreate('Clients and Segments');
+EndIf;
+lastAttr='';
+iAttr=DIMSIZ('}ElementAttributes_Clients and Segments');
+i=iAttr;
+While(i > 0);
+attrName = DIMNM('}ElementAttributes_Clients and Segments', i);
+If(SUBST(attrName,0,1)@<>'}');
+lastAttr=attrName;
+i=0;
+Else;
+i=i-1;
+EndIf;
+End;
+ElementAttrInsert('Clients and Segments','Clients and Segments',lastAttr,'Customer Type Description','S');
+lastAttr = 'Customer Type Description';
+
+#endregion
+#region Metadata
+vLastMember='';
+If(Representative_Profile__Client_Proxies_L5@<>'');
+If(vLastMember@='');
+HierarchyElementInsert('Clients and Segments','Clients and Segments','',Representative_Profile__Client_Proxies_L5,vType);
+Else;
+If(HierarchyElementExists('Clients and Segments','Leaves',Representative_Profile__Client_Proxies_L5)=1);
+StringToNumber('IMPERROR_CL_'|Representative_Profile__Client_Proxies_L5);
+EndIf;
+HierarchyElementInsert('Clients and Segments','Clients and Segments','',Representative_Profile__Client_Proxies_L5,'C');
+HierarchyElementComponentAdd('Clients and Segments','Clients and Segments',Representative_Profile__Client_Proxies_L5,vLastMember,vWeight);
+EndIf;
+vLastMember=Representative_Profile__Client_Proxies_L5;
+EndIf;
+If(Specific_Account_Tier__Partner_Name_L4@<>'');
+If(vLastMember@='');
+HierarchyElementInsert('Clients and Segments','Clients and Segments','',Specific_Account_Tier__Partner_Name_L4,vType);
+Else;
+If(HierarchyElementExists('Clients and Segments','Leaves',Specific_Account_Tier__Partner_Name_L4)=1);
+StringToNumber('IMPERROR_CL_'|Specific_Account_Tier__Partner_Name_L4);
+EndIf;
+HierarchyElementInsert('Clients and Segments','Clients and Segments','',Specific_Account_Tier__Partner_Name_L4,'C');
+HierarchyElementComponentAdd('Clients and Segments','Clients and Segments',Specific_Account_Tier__Partner_Name_L4,vLastMember,vWeight);
+EndIf;
+vLastMember=Specific_Account_Tier__Partner_Name_L4;
+EndIf;
+If(SubSegment_Classification_L3@<>'');
+If(vLastMember@='');
+HierarchyElementInsert('Clients and Segments','Clients and Segments','',SubSegment_Classification_L3,vType);
+Else;
+If(HierarchyElementExists('Clients and Segments','Leaves',SubSegment_Classification_L3)=1);
+StringToNumber('IMPERROR_CL_'|SubSegment_Classification_L3);
+EndIf;
+HierarchyElementInsert('Clients and Segments','Clients and Segments','',SubSegment_Classification_L3,'C');
+HierarchyElementComponentAdd('Clients and Segments','Clients and Segments',SubSegment_Classification_L3,vLastMember,vWeight);
+EndIf;
+vLastMember=SubSegment_Classification_L3;
+EndIf;
+If(Client_Type_Group_L2@<>'');
+If(vLastMember@='');
+HierarchyElementInsert('Clients and Segments','Clients and Segments','',Client_Type_Group_L2,vType);
+Else;
+If(HierarchyElementExists('Clients and Segments','Leaves',Client_Type_Group_L2)=1);
+StringToNumber('IMPERROR_CL_'|Client_Type_Group_L2);
+EndIf;
+HierarchyElementInsert('Clients and Segments','Clients and Segments','',Client_Type_Group_L2,'C');
+HierarchyElementComponentAdd('Clients and Segments','Clients and Segments',Client_Type_Group_L2,vLastMember,vWeight);
+EndIf;
+vLastMember=Client_Type_Group_L2;
+EndIf;
+If(Core_Segment_L1@<>'');
+If(vLastMember@='');
+HierarchyElementInsert('Clients and Segments','Clients and Segments','',Core_Segment_L1,vType);
+Else;
+If(HierarchyElementExists('Clients and Segments','Leaves',Core_Segment_L1)=1);
+StringToNumber('IMPERROR_CL_'|Core_Segment_L1);
+EndIf;
+HierarchyElementInsert('Clients and Segments','Clients and Segments','',Core_Segment_L1,'C');
+HierarchyElementComponentAdd('Clients and Segments','Clients and Segments',Core_Segment_L1,vLastMember,vWeight);
+EndIf;
+vLastMember=Core_Segment_L1;
+EndIf;
+If(Total@<>'');
+If(vLastMember@='');
+HierarchyElementInsert('Clients and Segments','Clients and Segments','',Total,vType);
+Else;
+If(HierarchyElementExists('Clients and Segments','Leaves',Total)=1);
+StringToNumber('IMPERROR_CL_'|Total);
+EndIf;
+HierarchyElementInsert('Clients and Segments','Clients and Segments','',Total,'C');
+HierarchyElementComponentAdd('Clients and Segments','Clients and Segments',Total,vLastMember,vWeight);
+EndIf;
+vLastMember=Total;
+EndIf;
+
+#endregion
+#region Data
+If(Representative_Profile__Client_Proxies_L5@<>'');
+ElementAttrPutS(Operational_Scope__Client_Service_Delivery,'Clients and Segments','Clients and Segments',Representative_Profile__Client_Proxies_L5,'Customer Type Description');
+EndIf;
+
+#endregion

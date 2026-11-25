@@ -1,0 +1,34 @@
+{
+	"@type":"Process",
+	"Name":"}Plans_NodeResetAll",
+	"HasSecurityAccess":false,
+	"Code@Code.link":"}Plans_NodeResetAll.ti",
+	"DataSource":
+	{
+		"Type":"None"
+	},
+	"Parameters":
+	[
+		{
+			"Name":"pPlan",
+			"Prompt":"",
+			"Value":"",
+			"Type":"String"
+		},
+		{
+			"Name":"pTask",
+			"Prompt":"",
+			"Value":"",
+			"Type":"String"
+		},
+		{
+			"Name":"pPrefix",
+			"Prompt":"",
+			"Value":"}Plans",
+			"Type":"String"
+		}
+	],
+	"Variables":[],
+	"UIData": "",
+	"VariablesUIData": []
+}

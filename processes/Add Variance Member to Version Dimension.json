@@ -1,0 +1,14 @@
+{
+	"@type":"Process",
+	"Name":"Add Variance Member to Version Dimension",
+	"HasSecurityAccess":false,
+	"Code@Code.link":"Add Variance Member to Version Dimension.ti",
+	"DataSource":
+	{
+		"Type":"None"
+	},
+	"Parameters":[],
+	"Variables":[],
+	"UIData": "",
+	"VariablesUIData": []
+}

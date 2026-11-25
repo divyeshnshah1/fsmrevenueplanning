@@ -1,0 +1,46 @@
+{
+	"@type":"MDXView",
+	"Name":"Revenue Planning Leaf Level",
+	"MDX@Code.link":"Revenue Planning Leaf Level.mdx",
+	"Meta": {
+		"Aliases": {
+			"[Region].[Region]": "MEMBER_NAME",
+			"[Time Period].[Time Period]": "MEMBER_NAME",
+			"[Products and Services].[Products and Services]": "MEMBER_NAME",
+			"[Version].[Version]": "MEMBER_NAME",
+			"[Clients and Segments].[Clients and Segments]": "MEMBER_NAME"
+		},
+		"ExpandAboves": {
+			"[Region].[Region]": false,
+			"[Measures].[Measures]": false,
+			"[Time Period].[Time Period]": false,
+			"[Products and Services].[Products and Services]": false,
+			"[Version].[Version]": false,
+			"[Clients and Segments].[Clients and Segments]": false
+		},
+		"ContextSets": {
+			"[Time Period].[Time Period]": {
+				"SubsetName": "Time Period Detail",
+				"IsPublic": true
+			},
+			"[Products and Services].[Products and Services]": {
+				"SubsetName": "Products Detail",
+				"IsPublic": true
+			},
+			"[Version].[Version]": {
+				"SubsetName": "Version Detail",
+				"IsPublic": true
+			},
+			"[Clients and Segments].[Clients and Segments]": {
+				"SubsetName": "Clients Detail",
+				"IsPublic": true
+			}
+		}
+	},
+	"ViewExtractSkipRuleValues": false,
+	"ViewExtractSkipConsolidatedValues": false,
+	"ViewExtractSkipZeroes": false,
+	"IsSuppressComputeOnOpen": false,
+	"IsAutocalculate": true,
+	"IsDeferComputeOnLeafDataEntry": false
+}

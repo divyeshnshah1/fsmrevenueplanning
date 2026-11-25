@@ -1,0 +1,83 @@
+#region Prolog
+MinorErrorLogMax = -1;
+OnMinorErrorDoItemSkip = 1;
+SetInputCharacterSet('TM1CS_ISO_8859_1');
+vType='N';
+vWeight=1.0;
+If (DimensionExists('Products and Services') = 0);
+DimensionCreate('Products and Services');
+EndIf;
+lastAttr='';
+iAttr=DIMSIZ('}ElementAttributes_Products and Services');
+i=iAttr;
+While(i > 0);
+attrName = DIMNM('}ElementAttributes_Products and Services', i);
+If(SUBST(attrName,0,1)@<>'}');
+lastAttr=attrName;
+i=0;
+Else;
+i=i-1;
+EndIf;
+End;
+ElementAttrInsert('Products and Services','Products and Services',lastAttr,'Product Explanation','S');
+lastAttr = 'Product Explanation';
+
+#endregion
+#region Metadata
+vLastMember='';
+If(Specific_Product__Service_L3@<>'');
+If(vLastMember@='');
+HierarchyElementInsert('Products and Services','Products and Services','',Specific_Product__Service_L3,vType);
+Else;
+If(HierarchyElementExists('Products and Services','Leaves',Specific_Product__Service_L3)=1);
+StringToNumber('IMPERROR_CL_'|Specific_Product__Service_L3);
+EndIf;
+HierarchyElementInsert('Products and Services','Products and Services','',Specific_Product__Service_L3,'C');
+HierarchyElementComponentAdd('Products and Services','Products and Services',Specific_Product__Service_L3,vLastMember,vWeight);
+EndIf;
+vLastMember=Specific_Product__Service_L3;
+EndIf;
+If(Product_Line_L2@<>'');
+If(vLastMember@='');
+HierarchyElementInsert('Products and Services','Products and Services','',Product_Line_L2,vType);
+Else;
+If(HierarchyElementExists('Products and Services','Leaves',Product_Line_L2)=1);
+StringToNumber('IMPERROR_CL_'|Product_Line_L2);
+EndIf;
+HierarchyElementInsert('Products and Services','Products and Services','',Product_Line_L2,'C');
+HierarchyElementComponentAdd('Products and Services','Products and Services',Product_Line_L2,vLastMember,vWeight);
+EndIf;
+vLastMember=Product_Line_L2;
+EndIf;
+If(Product_Group_L1@<>'');
+If(vLastMember@='');
+HierarchyElementInsert('Products and Services','Products and Services','',Product_Group_L1,vType);
+Else;
+If(HierarchyElementExists('Products and Services','Leaves',Product_Group_L1)=1);
+StringToNumber('IMPERROR_CL_'|Product_Group_L1);
+EndIf;
+HierarchyElementInsert('Products and Services','Products and Services','',Product_Group_L1,'C');
+HierarchyElementComponentAdd('Products and Services','Products and Services',Product_Group_L1,vLastMember,vWeight);
+EndIf;
+vLastMember=Product_Group_L1;
+EndIf;
+If(Core_Business_Division@<>'');
+If(vLastMember@='');
+HierarchyElementInsert('Products and Services','Products and Services','',Core_Business_Division,vType);
+Else;
+If(HierarchyElementExists('Products and Services','Leaves',Core_Business_Division)=1);
+StringToNumber('IMPERROR_CL_'|Core_Business_Division);
+EndIf;
+HierarchyElementInsert('Products and Services','Products and Services','',Core_Business_Division,'C');
+HierarchyElementComponentAdd('Products and Services','Products and Services',Core_Business_Division,vLastMember,vWeight);
+EndIf;
+vLastMember=Core_Business_Division;
+EndIf;
+
+#endregion
+#region Data
+If(Specific_Product__Service_L3@<>'');
+ElementAttrPutS(Strategic_Role__Commercial_Purpose,'Products and Services','Products and Services',Specific_Product__Service_L3,'Product Explanation');
+EndIf;
+
+#endregion

@@ -1,0 +1,40 @@
+{
+	"@type":"Process",
+	"Name":"}Plans_SetSecurity",
+	"HasSecurityAccess":true,
+	"Code@Code.link":"}Plans_SetSecurity.ti",
+	"DataSource":
+	{
+		"Type":"None"
+	},
+	"Parameters":
+	[
+		{
+			"Name":"pCube",
+			"Prompt":"Security Cube",
+			"Value":"",
+			"Type":"String"
+		},
+		{
+			"Name":"pObject",
+			"Prompt":"Object Name",
+			"Value":"",
+			"Type":"String"
+		},
+		{
+			"Name":"pGroup",
+			"Prompt":"Group Name",
+			"Value":"",
+			"Type":"String"
+		},
+		{
+			"Name":"pAccess",
+			"Prompt":"Access Level",
+			"Value":"READ",
+			"Type":"String"
+		}
+	],
+	"Variables":[],
+	"UIData": "_ParameterConstraints=e30=\f",
+	"VariablesUIData": []
+}

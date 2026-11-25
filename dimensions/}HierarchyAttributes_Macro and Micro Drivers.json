@@ -1,0 +1,12 @@
+{
+	"@type":"Dimension",
+	"Name":"}HierarchyAttributes_Macro and Micro Drivers",
+	"Hierarchies@Code.links":
+	[
+		"}HierarchyAttributes_Macro and Micro Drivers.hierarchies/}HierarchyAttributes_Macro and Micro Drivers.json"
+	],
+	"DefaultHierarchy":
+	{
+		"@id":"Dimensions('}HierarchyAttributes_Macro and Micro Drivers')/Hierarchies('}HierarchyAttributes_Macro and Micro Drivers')"
+	}
+}

@@ -1,0 +1,193 @@
+#region Prolog
+
+# }Plans_Setup is the initializeation process that created all TM1 objects used to create and manage plans
+# This process does not create new plans
+# Names for all plan objects that created by this process
+
+vPlanControlDimension =  pPrefix | '_Control';
+vPlanControlCube = pPrefix;
+vPlanStateDim = pPrefix | '_State';
+vPlansDimension = pPrefix;
+vPlanErrors = pPrefix | '_Errors';
+vPlanErrorLines = pPrefix | '_ErrorLines';
+
+vPlansConfigDimension = pPrefix | '_Config';
+vPlansConfigValueDimension = pPrefix | '_Value'; 
+vPlansConfigCube = pPrefix | '_' | 'Config';
+
+IF ( pReset @= 'Y' );
+    ExecuteProcess ( '}Plans_Cleanup' );
+ENDIF;
+
+# Plans dimension to track plans as member
+IF ( DimensionExists ( vPlansDimension ) = 0 );
+    DimensionCreate( vPlansDimension );
+ENDIF;
+
+# These members are used to store the details of each Plans
+IF ( DimensionExists ( vPlanControlDimension ) = 0 );
+    DimensionCreate( vPlanControlDimension );
+    DimensionElementInsertDirect( vPlanControlDimension, '', 'Name', 'S' );
+    DimensionElementInsertDirect( vPlanControlDimension, '', 'Owner', 'S' );
+    DimensionElementInsertDirect( vPlanControlDimension, '', 'Created', 'S' );
+    DimensionElementInsertDirect( vPlanControlDimension, '', 'Dimension', 'S' );
+    DimensionElementInsertDirect( vPlanControlDimension, '', 'Hierarchy', 'S' );
+    DimensionElementInsertDirect( vPlanControlDimension, '', 'Subset', 'S' );
+    DimensionElementInsertDirect( vPlanControlDimension, '', 'State', 'N' );
+ENDIF;
+
+# Plans state details
+IF ( DimensionExists ( vPlanStateDim )  = 0 );
+    DimensionCreate ( vPlanStateDim );
+    DimensionElementInsertDirect ( vPlanStateDim, '', 'Contributor', 'S' );
+    DimensionElementInsertDirect ( vPlanStateDim, '', 'Reviewer', 'S' );
+    DimensionElementInsertDirect ( vPlanStateDim, '', 'State', 'S' );
+    DimensionElementInsertDirect ( vPlanStateDim, '', 'Owner', 'S' );
+    DimensionElementInsertDirect ( vPlanStateDim, '', 'WorkspaceOwner', 'S' );
+    DimensionElementInsertDirect ( vPlanStateDim, '', 'TakeOwnershipNode', 'S' );
+    DimensionElementInsertDirect ( vPlanStateDim, '', 'Last update', 'S' );
+    DimensionElementInsertDirect ( vPlanStateDim, '', 'Last action', 'S' );
+ENDIF;
+
+IF (DimensionElementExists( vPlanStateDim, 'planOwner' ) = 0);
+    DimensionElementInsertDirect ( vPlanStateDim, '', 'planOwner', 'S' );
+ENDIF;
+
+IF (DimensionElementExists( vPlanStateDim, 'Viewer' ) = 0);
+    DimensionElementInsertDirect ( vPlanStateDim, '', 'Viewer', 'S' );
+ENDIF;
+
+# Lines for error and comment cubes
+IF ( DimensionExists ( vPlanErrorLines ) = 0 );
+    DimensionCreate ( vPlanErrorLines );
+    DimensionElementInsertDirect ( vPlanErrorLines, '', '1', 'N' );
+ENDIF;
+
+# Error details
+IF (DimensionExists ( vPlanErrors ) = 0 );
+    DimensionCreate ( vPlanErrors );
+    DimensionElementInsertDirect ( vPlanErrors, '', 'Error', 'S' );
+    DimensionElementInsertDirect ( vPlanErrors, '', 'Message', 'S' );
+    DimensionElementInsertDirect ( vPlanErrors, '', 'DateTime', 'S' );
+    DimensionElementInsertDirect ( vPlanErrors, '', 'User', 'S' );
+ENDIF;
+
+IF ( CubeExists ( vPlanErrors ) = 0 );
+    CubeCreate( vPlanErrors, vPlanErrorLines, vPlanErrors );
+ENDIF;
+
+IF ( CubeExists( vPlanControlCube ) = 0 ); 
+    CubeCreate ( vPlanControlCube, vPlansDimension, vPlanControlDimension );
+ENDIF;
+
+
+# Plans configuration cube.  Stores the plans process version
+IF ( DimensionExists ( vPlansConfigDimension ) = 0 );
+    DimensionCreate ( vPlansConfigDimension );
+ENDIF;
+DimensionElementInsertDirect ( vPlansConfigDimension, '', 'ProcessVersion', 'N' );
+
+IF ( DimensionExists ( vPlansConfigValueDimension ) = 0 );
+    DimensionCreate ( vPlansConfigValueDimension );
+ENDIF;
+DimensionElementInsertDirect ( vPlansConfigValueDimension, '', 'Value', 'N' );
+
+IF ( CubeExists ( vPlansConfigCube ) = 0 );
+    CubeCreate ( vPlansConfigCube, vPlansConfigDimension, vPlansConfigValueDimension );
+ENDIF;
+
+IF ( pVersion > 0 );
+    CellPutN ( pVersion, vPlansConfigCube, 'ProcessVersion', 'Value' );
+ENDIF;
+
+vSecurityRefresh = 0;
+vPlanGroup = pPrefix | '_Everyone';
+IF ( DimensionElementExists ( '}Groups', vPlanGroup ) = 0 );
+    vSecurityRefresh = 1;
+    AddGroup ( vPlanGroup );
+ENDIF;
+
+vProcessSecurityCube = '}ProcessSecurity'; 
+IF ( CubeExists ( vProcessSecurityCube ) = 0 );
+    CubeCreate ( vProcessSecurityCube, '}Processes', '}Groups' );
+ENDIF;
+
+
+#endregion
+#region Epilog
+
+# Add a rule that adds all users to the }Plans_Everyone group
+vRule = '[''' | vPlanGroup | '''] = S:''' | vPlanGroup | ''';';
+vClientGroupRules = CubeRuleGet ( '}ClientGroups' );
+IF ( SCAN ( vRule, vClientGroupRules ) = 0 );
+    vSecurityRefresh = 1;
+    CubeRuleAppend ( '}ClientGroups', vRule );
+ENDIF;
+
+# Set Process Security - Helper subroutine pattern
+# Usage: Set vSecCube, vSecObject, vSecGroup, vSecAccess then call subroutine
+vSecCube = '}ProcessSecurity';
+vSecGroup = vPlanGroup;
+vSecAccess = 'READ';
+
+# Process Security Assignments
+EXECUTEPROCESS('}Plans_SetSecurity', 'pCube', vSecCube, 'pObject', '}Plans_AssignNode', 'pGroup', vSecGroup, 'pAccess', vSecAccess);
+EXECUTEPROCESS('}Plans_SetSecurity', 'pCube', vSecCube, 'pObject', '}Plans_Cleanup', 'pGroup', vSecGroup, 'pAccess', vSecAccess);
+EXECUTEPROCESS('}Plans_SetSecurity', 'pCube', vSecCube, 'pObject', '}Plans_CopyPlan', 'pGroup', vSecGroup, 'pAccess', vSecAccess);
+EXECUTEPROCESS('}Plans_SetSecurity', 'pCube', vSecCube, 'pObject', '}Plans_CopyTask', 'pGroup', vSecGroup, 'pAccess', vSecAccess);
+EXECUTEPROCESS('}Plans_SetSecurity', 'pCube', vSecCube, 'pObject', '}Plans_CreatePlan', 'pGroup', vSecGroup, 'pAccess', vSecAccess);
+EXECUTEPROCESS('}Plans_SetSecurity', 'pCube', vSecCube, 'pObject', '}Plans_CreateTask', 'pGroup', vSecGroup, 'pAccess', vSecAccess);
+EXECUTEPROCESS('}Plans_SetSecurity', 'pCube', vSecCube, 'pObject', '}Plans_DeletePlan', 'pGroup', vSecGroup, 'pAccess', vSecAccess);
+EXECUTEPROCESS('}Plans_SetSecurity', 'pCube', vSecCube, 'pObject', '}Plans_DeleteTask', 'pGroup', vSecGroup, 'pAccess', vSecAccess);
+EXECUTEPROCESS('}Plans_SetSecurity', 'pCube', vSecCube, 'pObject', '}Plans_GenerateResponsibilityHierarchy', 'pGroup', vSecGroup, 'pAccess', vSecAccess);
+EXECUTEPROCESS('}Plans_SetSecurity', 'pCube', vSecCube, 'pObject', '}Plans_LogError', 'pGroup', vSecGroup, 'pAccess', vSecAccess);
+EXECUTEPROCESS('}Plans_SetSecurity', 'pCube', vSecCube, 'pObject', '}Plans_NodeComplete', 'pGroup', vSecGroup, 'pAccess', vSecAccess);
+EXECUTEPROCESS('}Plans_SetSecurity', 'pCube', vSecCube, 'pObject', '}Plans_NodeReleaseOwnership', 'pGroup', vSecGroup, 'pAccess', vSecAccess);
+EXECUTEPROCESS('}Plans_SetSecurity', 'pCube', vSecCube, 'pObject', '}Plans_NodeReset', 'pGroup', vSecGroup, 'pAccess', vSecAccess);
+EXECUTEPROCESS('}Plans_SetSecurity', 'pCube', vSecCube, 'pObject', '}Plans_NodeResetAll', 'pGroup', vSecGroup, 'pAccess', vSecAccess);
+EXECUTEPROCESS('}Plans_SetSecurity', 'pCube', vSecCube, 'pObject', '}Plans_NodeRevert', 'pGroup', vSecGroup, 'pAccess', vSecAccess);
+EXECUTEPROCESS('}Plans_SetSecurity', 'pCube', vSecCube, 'pObject', '}Plans_NodeReturn', 'pGroup', vSecGroup, 'pAccess', vSecAccess);
+EXECUTEPROCESS('}Plans_SetSecurity', 'pCube', vSecCube, 'pObject', '}Plans_NodeSubmit', 'pGroup', vSecGroup, 'pAccess', vSecAccess);
+EXECUTEPROCESS('}Plans_SetSecurity', 'pCube', vSecCube, 'pObject', '}Plans_NodeTakeOwnership', 'pGroup', vSecGroup, 'pAccess', vSecAccess);
+EXECUTEPROCESS('}Plans_SetSecurity', 'pCube', vSecCube, 'pObject', '}Plans_RemoveAllNodeAssignments', 'pGroup', vSecGroup, 'pAccess', vSecAccess);
+EXECUTEPROCESS('}Plans_SetSecurity', 'pCube', vSecCube, 'pObject', '}Plans_RemoveNodeAssignment', 'pGroup', vSecGroup, 'pAccess', vSecAccess);
+EXECUTEPROCESS('}Plans_SetSecurity', 'pCube', vSecCube, 'pObject', '}Plans_ResetPlan', 'pGroup', vSecGroup, 'pAccess', vSecAccess);
+EXECUTEPROCESS('}Plans_SetSecurity', 'pCube', vSecCube, 'pObject', '}Plans_ResetTask', 'pGroup', vSecGroup, 'pAccess', vSecAccess);
+EXECUTEPROCESS('}Plans_SetSecurity', 'pCube', vSecCube, 'pObject', '}Plans_SetNodeParentState', 'pGroup', vSecGroup, 'pAccess', vSecAccess);
+EXECUTEPROCESS('}Plans_SetSecurity', 'pCube', vSecCube, 'pObject', '}Plans_ValidateResponsibilityHierarchy', 'pGroup', vSecGroup, 'pAccess', vSecAccess);
+EXECUTEPROCESS('}Plans_SetSecurity', 'pCube', vSecCube, 'pObject', '}Plans_Update', 'pGroup', vSecGroup, 'pAccess', vSecAccess);
+
+vSecAccess = 'NONE';
+EXECUTEPROCESS('}Plans_SetSecurity', 'pCube', vSecCube, 'pObject', '}Plans_Setup', 'pGroup', vSecGroup, 'pAccess', vSecAccess);
+EXECUTEPROCESS('}Plans_SetSecurity', 'pCube', vSecCube, 'pObject', '}Plans_SetSecurity', 'pGroup', vSecGroup, 'pAccess', vSecAccess);
+
+# Dimension Security Assignments
+IF ( CubeExists( '}DimensionSecurity' ) = 1 );
+    vSecCube = '}DimensionSecurity';
+    vSecAccess = 'READ';
+    
+    EXECUTEPROCESS('}Plans_SetSecurity', 'pCube', vSecCube, 'pObject', pPrefix, 'pGroup', vSecGroup, 'pAccess', vSecAccess);
+    EXECUTEPROCESS('}Plans_SetSecurity', 'pCube', vSecCube, 'pObject', pPrefix | '_Control', 'pGroup', vSecGroup, 'pAccess', vSecAccess);
+    EXECUTEPROCESS('}Plans_SetSecurity', 'pCube', vSecCube, 'pObject', pPrefix | '_ErrorLines', 'pGroup', vSecGroup, 'pAccess', vSecAccess);
+    EXECUTEPROCESS('}Plans_SetSecurity', 'pCube', vSecCube, 'pObject', pPrefix | '_Errors', 'pGroup', vSecGroup, 'pAccess', vSecAccess);
+    EXECUTEPROCESS('}Plans_SetSecurity', 'pCube', vSecCube, 'pObject', pPrefix | '_State', 'pGroup', vSecGroup, 'pAccess', vSecAccess);
+    EXECUTEPROCESS('}Plans_SetSecurity', 'pCube', vSecCube, 'pObject', vPlansConfigDimension, 'pGroup', vSecGroup, 'pAccess', vSecAccess);
+    EXECUTEPROCESS('}Plans_SetSecurity', 'pCube', vSecCube, 'pObject', vPlansConfigValueDimension, 'pGroup', vSecGroup, 'pAccess', vSecAccess);
+ENDIF;
+
+# Cube Security Assignments
+IF ( CubeExists( '}CubeSecurity' ) = 1 );
+    vSecCube = '}CubeSecurity';
+    vSecAccess = 'READ';
+    
+    EXECUTEPROCESS('}Plans_SetSecurity', 'pCube', vSecCube, 'pObject', vPlansConfigCube, 'pGroup', vSecGroup, 'pAccess', vSecAccess);
+    EXECUTEPROCESS('}Plans_SetSecurity', 'pCube', vSecCube, 'pObject', pPrefix, 'pGroup', vSecGroup, 'pAccess', vSecAccess);
+    EXECUTEPROCESS('}Plans_SetSecurity', 'pCube', vSecCube, 'pObject', pPrefix | '_Errors', 'pGroup', vSecGroup, 'pAccess', vSecAccess);
+ENDIF;
+
+IF ( vSecurityRefresh = 1 );
+    ExecuteProcess ( '}Plans_SecurityRefresh' );
+ENDIF;
+
+
+#endregion

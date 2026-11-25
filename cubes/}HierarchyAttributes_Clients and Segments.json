@@ -1,0 +1,14 @@
+{
+	"@type":"Cube",
+	"Name":"}HierarchyAttributes_Clients and Segments",
+	"Dimensions":
+	[
+		{
+			"@id":"Dimensions('}Hierarchies_Clients and Segments')"
+		},
+		{
+			"@id":"Dimensions('}HierarchyAttributes_Clients and Segments')"
+		}
+	],
+	"Views@Code.links":[]
+}

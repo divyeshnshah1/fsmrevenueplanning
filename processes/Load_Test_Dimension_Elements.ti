@@ -1,0 +1,15 @@
+#region Data
+sDim = 'test';
+
+If( DimensionElementExists( sDim, 'Element 1' ) = 0 );
+  DimensionElementInsert( sDim, '', 'Element 1', 'N' );
+EndIf;
+
+If( DimensionElementExists( sDim, 'Element 2' ) = 0 );
+  DimensionElementInsert( sDim, '', 'Element 2', 'N' );
+EndIf;
+
+If( DimensionElementExists( sDim, 'Element 3' ) = 0 );
+  DimensionElementInsert( sDim, '', 'Element 3', 'N' );
+EndIf;
+#endregion

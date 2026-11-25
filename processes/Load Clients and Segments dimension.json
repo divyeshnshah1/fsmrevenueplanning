@@ -1,0 +1,73 @@
+{
+	"@type":"Process",
+	"Name":"Load Clients and Segments dimension",
+	"HasSecurityAccess":false,
+	"Code@Code.link":"Load Clients and Segments dimension.ti",
+	"DataSource":
+	{
+		"Type":"ASCII",
+		"dataSourceNameForServer":"Citigroup PA Use Case - Clients and Segments V2.csv",
+		"dataSourceNameForClient":"",
+		"asciiHeaderRecords":1,
+		"asciiQuoteCharacter":"\"",
+		"asciiDecimalSeparator":".",
+		"asciiThousandSeparator":",",
+		"asciiDelimiterType":"Character",
+		"asciiDelimiterChar":","
+	},
+	"Parameters":[],
+	"Variables":
+	[
+		{
+			"Name":"Total",
+			"Type":"String",
+			"Position":1,
+			"StartByte":0,
+			"EndByte":0
+		},
+		{
+			"Name":"Core_Segment_L1",
+			"Type":"String",
+			"Position":2,
+			"StartByte":0,
+			"EndByte":0
+		},
+		{
+			"Name":"Client_Type_Group_L2",
+			"Type":"String",
+			"Position":3,
+			"StartByte":0,
+			"EndByte":0
+		},
+		{
+			"Name":"SubSegment_Classification_L3",
+			"Type":"String",
+			"Position":4,
+			"StartByte":0,
+			"EndByte":0
+		},
+		{
+			"Name":"Specific_Account_Tier__Partner_Name_L4",
+			"Type":"String",
+			"Position":5,
+			"StartByte":0,
+			"EndByte":0
+		},
+		{
+			"Name":"Representative_Profile__Client_Proxies_L5",
+			"Type":"String",
+			"Position":6,
+			"StartByte":0,
+			"EndByte":0
+		},
+		{
+			"Name":"Operational_Scope__Client_Service_Delivery",
+			"Type":"String",
+			"Position":7,
+			"StartByte":0,
+			"EndByte":0
+		}
+	],
+	"UID": "1779213562000",
+	"UIData": "{\"MappingType\":\"members\",\"Dimension\":\"Clients and Segments\",\"Hierarchy\":\"Clients and Segments\",\"Recreate\":false,\"ElementMapping\":\"multi\",\"Skips\":\"true,true,true\",\"Mappings\":[{\"id\":\"col0\",\"SourceType\":\"column\",\"Name\":\"Total\",\"Type\":\"String\",\"Content\":\"element\",\"Qualifier\":\"level5\"},{\"id\":\"col1\",\"SourceType\":\"column\",\"Name\":\"Core_Segment_L1\",\"Type\":\"String\",\"Content\":\"element\",\"Qualifier\":\"level4\"},{\"id\":\"col2\",\"SourceType\":\"column\",\"Name\":\"Client_Type_Group_L2\",\"Type\":\"String\",\"Content\":\"element\",\"Qualifier\":\"level3\"},{\"id\":\"col3\",\"SourceType\":\"column\",\"Name\":\"SubSegment_Classification_L3\",\"Type\":\"String\",\"Content\":\"element\",\"Qualifier\":\"level2\"},{\"id\":\"col4\",\"SourceType\":\"column\",\"Name\":\"Specific_Account_Tier__Partner_Name_L4\",\"Type\":\"String\",\"Content\":\"element\",\"Qualifier\":\"level1\"},{\"id\":\"col5\",\"SourceType\":\"column\",\"Name\":\"Representative_Profile__Client_Proxies_L5\",\"Type\":\"String\",\"Content\":\"element\",\"Qualifier\":\"level0\"},{\"id\":\"col6\",\"SourceType\":\"column\",\"Name\":\"Operational_Scope__Client_Service_Delivery\",\"Type\":\"String\",\"Content\":\"attribute\",\"Qualifier\":\"level0\",\"Attribute\":\"Customer Type Description\"}]}"
+}

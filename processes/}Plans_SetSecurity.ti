@@ -1,0 +1,37 @@
+#region Prolog
+
+# Helper process to set security access if cell is updateable
+# This consolidates the repetitive CellIsUpdateable + CellPutS pattern
+# Parameters:
+#   pCube - Security cube name (e.g., '}ProcessSecurity', '}DimensionSecurity', '}CubeSecurity')
+#   pObject - Object name (process, dimension, or cube name)
+#   pGroup - Group name
+#   pAccess - Access level ('READ', 'WRITE', 'NONE', etc.)
+
+IF ( CellIsUpdateable( pCube, pObject, pGroup ) = 1 );
+    CellPutS ( pAccess, pCube, pObject, pGroup );
+ELSE;
+    # Log error when cell cannot be updated
+    vErrorMessage = 'Cannot update security: Cube=' | pCube | ', Object=' | pObject | ', Group=' | pGroup | ', Access=' | pAccess;
+    vErrorType = 'Security Update Failed';
+    
+    # Log to }Plans_Errors cube
+    vErrorLines = '}Plans_ErrorLines';
+    vErrorCube = '}Plans_Errors';
+    vCurrentLine = NumberToString ( DIMSIZ ( vErrorLines ) );
+    vNow = TIMST (NOW(), '\Y-\m-\d \h:\i:\s' );
+    vUser = TM1User();
+    
+    CellPutS ( vErrorType, vErrorCube, vCurrentLine, 'Error' );
+    CellPutS ( vErrorMessage, vErrorCube, vCurrentLine, 'Message' );
+    CellPutS ( vNow, vErrorCube, vCurrentLine, 'DateTime' );
+    CellPutS ( vUser, vErrorCube, vCurrentLine, 'User' );
+    
+    # Add next line for future errors
+    vNextLine = NumberToString ( DIMSIZ( vErrorLines ) + 1 );
+    DimensionElementInsertDirect ( vErrorLines, '', vNextLine, 'N' );
+    ProcessError;
+ENDIF;
+
+
+#endregion

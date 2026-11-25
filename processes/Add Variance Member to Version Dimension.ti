@@ -1,0 +1,13 @@
+#region Prolog
+sDimension = 'Version';
+sElement = 'Variance';
+sElementType = 'C';
+
+IF( DimensionElementExists( sDimension, sElement ) = 0 );
+    DimensionElementInsert( sDimension, '', sElement, sElementType );
+ENDIF;
+
+DimensionElementComponentAdd( sDimension, sElement, 'Forecast', 1 );
+DimensionElementComponentAdd( sDimension, sElement, 'Budget', -1 );
+
+#endregion

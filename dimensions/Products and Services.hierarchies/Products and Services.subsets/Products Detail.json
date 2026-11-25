@@ -1,0 +1,6 @@
+{
+	"@type":"Subset",
+	"Name":"Products Detail",
+	"Alias":"MEMBER_NAME",
+	"Expression":"TM1IGNORE_BADTUPLES {TM1FILTERBYLEVEL(TM1SUBSETALL([Products and Services].[Products and Services]) , 0)}"
+}

@@ -1,0 +1,6 @@
+{
+	"@type":"Subset",
+	"Name":"Version Detail",
+	"Alias":"MEMBER_NAME",
+	"Expression":"TM1IGNORE_BADTUPLES {[Version].[Version].MEMBERS}"
+}

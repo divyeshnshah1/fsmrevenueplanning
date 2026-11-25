@@ -1,0 +1,34 @@
+{
+	"@type":"Process",
+	"Name":"}Plans_ValidateResponsibilityHierarchy",
+	"HasSecurityAccess":false,
+	"Code@Code.link":"}Plans_ValidateResponsibilityHierarchy.ti",
+	"DataSource":
+	{
+		"Type":"None"
+	},
+	"Parameters":
+	[
+		{
+			"Name":"pDimension",
+			"Prompt":"",
+			"Value":"",
+			"Type":"String"
+		},
+		{
+			"Name":"pHierarchy",
+			"Prompt":"",
+			"Value":"",
+			"Type":"String"
+		},
+		{
+			"Name":"pSubset",
+			"Prompt":"",
+			"Value":"",
+			"Type":"String"
+		}
+	],
+	"Variables":[],
+	"UIData": "_ParameterConstraints=e30=\f",
+	"VariablesUIData": []
+}

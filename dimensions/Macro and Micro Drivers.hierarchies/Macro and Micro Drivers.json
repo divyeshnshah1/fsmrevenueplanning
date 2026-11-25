@@ -1,0 +1,44 @@
+{
+	"@type":"Hierarchy",
+	"Name":"Macro and Micro Drivers",
+	"Elements":
+	[
+		{
+			"Name":"Fed Funds Rate",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"10 Year Treasury Yield",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Gross Domestic Product (GDP)",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Currency Rates",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Consumer Price Index (CPI)",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Producer Price Index ( PPI)",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Volatility Index ( VIX)",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Unemployment Rate",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Interest Rates",
+			"Type":"Numeric"
+		}
+	],
+	"Subsets@Code.links":[]
+}

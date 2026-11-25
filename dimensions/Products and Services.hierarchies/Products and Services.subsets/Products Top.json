@@ -1,0 +1,6 @@
+{
+	"@type":"Subset",
+	"Name":"Products Top",
+	"Alias":"MEMBER_NAME",
+	"Expression":"TM1IGNORE_BADTUPLES {DRILLDOWNMEMBER(DRILLUPMEMBER([Products and Services].[Products and Services].MEMBERS , {[Products and Services].[Products and Services].[Institutional Clients (Wholesale)],[Products and Services].[Products and Services].[Personal & Wealth (Retail/HNW)]}) , {[Products and Services].[Products and Services].[Institutional Clients (Wholesale)],[Products and Services].[Products and Services].[Personal & Wealth (Retail/HNW)]} , RECURSIVE)}"
+}

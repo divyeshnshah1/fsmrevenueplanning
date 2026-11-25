@@ -1,0 +1,48 @@
+{
+	"@type":"Hierarchy",
+	"Name":"Version",
+	"Elements":
+	[
+		{
+			"Name":"Forecast",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Budget",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Actuals",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Predictive Univariate",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Predictive Multivariate",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Variance",
+			"Type":"Consolidated"
+		}
+	],
+	"Edges":
+	[
+		{
+			"ParentName":"Variance",
+			"ComponentName":"Forecast",
+			"Weight":1
+		},
+		{
+			"ParentName":"Variance",
+			"ComponentName":"Budget",
+			"Weight":-1
+		}
+	],
+	"Subsets@Code.links":
+	[
+		"Version.subsets/Version Detail.json"
+	]
+}

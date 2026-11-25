@@ -1,0 +1,81 @@
+{
+	"@type":"Process",
+	"Name":"Load Revenue Planning Cube data",
+	"HasSecurityAccess":false,
+	"Code@Code.link":"Load Revenue Planning Cube data.ti",
+	"DataSource":
+	{
+		"Type":"ASCII",
+		"dataSourceNameForServer":"Revenue_Planning_Data.csv",
+		"dataSourceNameForClient":"",
+		"asciiHeaderRecords":1,
+		"asciiQuoteCharacter":"\"",
+		"asciiDecimalSeparator":".",
+		"asciiThousandSeparator":",",
+		"asciiDelimiterType":"Character",
+		"asciiDelimiterChar":","
+	},
+	"Parameters":
+	[
+		{
+			"Name":"pResult",
+			"Prompt":"Import count result file",
+			"Value":"",
+			"Type":"String"
+		}
+	],
+	"Variables":
+	[
+		{
+			"Name":"Region",
+			"Type":"String",
+			"Position":1,
+			"StartByte":0,
+			"EndByte":0
+		},
+		{
+			"Name":"Products_and_Services",
+			"Type":"String",
+			"Position":2,
+			"StartByte":0,
+			"EndByte":0
+		},
+		{
+			"Name":"Clients_and_Segments",
+			"Type":"String",
+			"Position":3,
+			"StartByte":0,
+			"EndByte":0
+		},
+		{
+			"Name":"Time_Period",
+			"Type":"String",
+			"Position":4,
+			"StartByte":0,
+			"EndByte":0
+		},
+		{
+			"Name":"Version",
+			"Type":"String",
+			"Position":5,
+			"StartByte":0,
+			"EndByte":0
+		},
+		{
+			"Name":"Measures",
+			"Type":"String",
+			"Position":6,
+			"StartByte":0,
+			"EndByte":0
+		},
+		{
+			"Name":"Value",
+			"Type":"String",
+			"Position":7,
+			"StartByte":0,
+			"EndByte":0
+		}
+	],
+	"UID": "1779242763000",
+	"UIData": "{\"MappingType\":\"data\",\"Cube\":\"Revenue Planning\",\"DataReset\":\"none\",\"DataResetView\":\"\",\"AddOrReplace\":false,\"Skips\":\"true,true,true\",\"Mappings\":[{\"id\":\"col0\",\"SourceType\":\"column\",\"Name\":\"Region\",\"Type\":\"String\",\"Content\":\"element\",\"Qualifier\":\"level0\",\"Dimension\":\"Region\"},{\"id\":\"col1\",\"SourceType\":\"column\",\"Name\":\"Products_and_Services\",\"Type\":\"String\",\"Content\":\"element\",\"Qualifier\":\"level0\",\"Dimension\":\"Products and Services\"},{\"id\":\"col2\",\"SourceType\":\"column\",\"Name\":\"Clients_and_Segments\",\"Type\":\"String\",\"Content\":\"element\",\"Qualifier\":\"level0\",\"Dimension\":\"Clients and Segments\"},{\"id\":\"col3\",\"SourceType\":\"column\",\"Name\":\"Time_Period\",\"Type\":\"String\",\"Content\":\"element\",\"Qualifier\":\"level0\",\"Dimension\":\"Time Period\"},{\"id\":\"col4\",\"SourceType\":\"column\",\"Name\":\"Version\",\"Type\":\"String\",\"Content\":\"element\",\"Qualifier\":\"level0\",\"Dimension\":\"Version\"},{\"id\":\"col5\",\"SourceType\":\"column\",\"Name\":\"Measures\",\"Type\":\"String\",\"Content\":\"element\",\"Qualifier\":\"level0\",\"Dimension\":\"Measures\"},{\"id\":\"col6\",\"SourceType\":\"column\",\"Name\":\"Value\",\"Type\":\"Numeric\",\"Content\":\"data\",\"PriorType\":\"String\"}]}"
+}

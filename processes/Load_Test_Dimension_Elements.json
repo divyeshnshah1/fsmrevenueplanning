@@ -1,0 +1,23 @@
+{
+	"@type":"Process",
+	"Name":"Load_Test_Dimension_Elements",
+	"HasSecurityAccess":false,
+	"Code@Code.link":"Load_Test_Dimension_Elements.ti",
+	"DataSource":
+	{
+		"Type":"ASCII",
+		"dataSourceNameForServer":"Citigroup PA Use Case - Regions.csv",
+		"dataSourceNameForClient":"Citigroup PA Use Case - Regions.csv",
+		"asciiHeaderRecords":0,
+		"asciiQuoteCharacter":"\"",
+		"asciiDecimalSeparator":".",
+		"asciiThousandSeparator":",",
+		"asciiDelimiterType":"Character",
+		"asciiDelimiterChar":","
+	},
+	"Parameters":[],
+	"Variables":[],
+	"UID": "1783971890000",
+	"UIData": "",
+	"VariablesUIData": []
+}

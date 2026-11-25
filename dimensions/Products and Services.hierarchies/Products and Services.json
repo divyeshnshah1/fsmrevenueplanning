@@ -1,0 +1,370 @@
+{
+	"@type":"Hierarchy",
+	"Name":"Products and Services",
+	"Elements":
+	[
+		{
+			"Name":"Liquidity & Cash Management",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Treasury & Trade Solutions (TTS)",
+			"Type":"Consolidated"
+		},
+		{
+			"Name":"Services",
+			"Type":"Consolidated"
+		},
+		{
+			"Name":"Institutional Clients (Wholesale)",
+			"Type":"Consolidated"
+		},
+		{
+			"Name":"Payments & Receivables",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Trade & Supply Chain Finance",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Global Custody & Clearing",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Securities Services",
+			"Type":"Consolidated"
+		},
+		{
+			"Name":"Issuer Services & Fund Admin",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Macro Trading (FX & Rates)",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Fixed Income Markets",
+			"Type":"Consolidated"
+		},
+		{
+			"Name":"Markets",
+			"Type":"Consolidated"
+		},
+		{
+			"Name":"Spread Products & Commodities",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Cash Equities & Derivatives",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Equity Markets",
+			"Type":"Consolidated"
+		},
+		{
+			"Name":"Prime Brokerage & Securities Lending",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Mergers & Acquisitions (M&A)",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Investment Banking",
+			"Type":"Consolidated"
+		},
+		{
+			"Name":"Banking",
+			"Type":"Consolidated"
+		},
+		{
+			"Name":"Capital Markets Underwriting",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Balance Sheet Loans",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Corporate Lending",
+			"Type":"Consolidated"
+		},
+		{
+			"Name":"Proprietary Credit Cards",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Citi Branded Cards",
+			"Type":"Consolidated"
+		},
+		{
+			"Name":"U.S. Personal Banking (USPB)",
+			"Type":"Consolidated"
+		},
+		{
+			"Name":"Personal & Wealth (Retail/HNW)",
+			"Type":"Consolidated"
+		},
+		{
+			"Name":"Private-Label Partner Cards",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Retail Services",
+			"Type":"Consolidated"
+		},
+		{
+			"Name":"Retail Banking",
+			"Type":"Consolidated"
+		},
+		{
+			"Name":"Investment Advisory",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Citi Global Wealth / Citigold",
+			"Type":"Consolidated"
+		},
+		{
+			"Name":"Wealth Management",
+			"Type":"Consolidated"
+		},
+		{
+			"Name":"Bespoke Portfolio & Trust Services",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Citi Private Bank",
+			"Type":"Consolidated"
+		},
+		{
+			"Name":"Specialized Private Financing",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Total Products and Services",
+			"Type":"Consolidated"
+		},
+		{
+			"Name":"Deposits",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Mortgages",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Auto Loans",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Credit Cards",
+			"Type":"Numeric"
+		}
+	],
+	"Edges":
+	[
+		{
+			"ParentName":"Treasury & Trade Solutions (TTS)",
+			"ComponentName":"Liquidity & Cash Management",
+			"Weight":1
+		},
+		{
+			"ParentName":"Treasury & Trade Solutions (TTS)",
+			"ComponentName":"Payments & Receivables",
+			"Weight":1
+		},
+		{
+			"ParentName":"Treasury & Trade Solutions (TTS)",
+			"ComponentName":"Trade & Supply Chain Finance",
+			"Weight":1
+		},
+		{
+			"ParentName":"Services",
+			"ComponentName":"Treasury & Trade Solutions (TTS)",
+			"Weight":1
+		},
+		{
+			"ParentName":"Services",
+			"ComponentName":"Securities Services",
+			"Weight":1
+		},
+		{
+			"ParentName":"Institutional Clients (Wholesale)",
+			"ComponentName":"Services",
+			"Weight":1
+		},
+		{
+			"ParentName":"Institutional Clients (Wholesale)",
+			"ComponentName":"Markets",
+			"Weight":1
+		},
+		{
+			"ParentName":"Institutional Clients (Wholesale)",
+			"ComponentName":"Banking",
+			"Weight":1
+		},
+		{
+			"ParentName":"Securities Services",
+			"ComponentName":"Global Custody & Clearing",
+			"Weight":1
+		},
+		{
+			"ParentName":"Securities Services",
+			"ComponentName":"Issuer Services & Fund Admin",
+			"Weight":1
+		},
+		{
+			"ParentName":"Fixed Income Markets",
+			"ComponentName":"Macro Trading (FX & Rates)",
+			"Weight":1
+		},
+		{
+			"ParentName":"Fixed Income Markets",
+			"ComponentName":"Spread Products & Commodities",
+			"Weight":1
+		},
+		{
+			"ParentName":"Markets",
+			"ComponentName":"Fixed Income Markets",
+			"Weight":1
+		},
+		{
+			"ParentName":"Markets",
+			"ComponentName":"Equity Markets",
+			"Weight":1
+		},
+		{
+			"ParentName":"Equity Markets",
+			"ComponentName":"Cash Equities & Derivatives",
+			"Weight":1
+		},
+		{
+			"ParentName":"Equity Markets",
+			"ComponentName":"Prime Brokerage & Securities Lending",
+			"Weight":1
+		},
+		{
+			"ParentName":"Investment Banking",
+			"ComponentName":"Mergers & Acquisitions (M&A)",
+			"Weight":1
+		},
+		{
+			"ParentName":"Investment Banking",
+			"ComponentName":"Capital Markets Underwriting",
+			"Weight":1
+		},
+		{
+			"ParentName":"Banking",
+			"ComponentName":"Investment Banking",
+			"Weight":1
+		},
+		{
+			"ParentName":"Banking",
+			"ComponentName":"Corporate Lending",
+			"Weight":1
+		},
+		{
+			"ParentName":"Corporate Lending",
+			"ComponentName":"Balance Sheet Loans",
+			"Weight":1
+		},
+		{
+			"ParentName":"Citi Branded Cards",
+			"ComponentName":"Proprietary Credit Cards",
+			"Weight":1
+		},
+		{
+			"ParentName":"U.S. Personal Banking (USPB)",
+			"ComponentName":"Citi Branded Cards",
+			"Weight":1
+		},
+		{
+			"ParentName":"U.S. Personal Banking (USPB)",
+			"ComponentName":"Retail Services",
+			"Weight":1
+		},
+		{
+			"ParentName":"U.S. Personal Banking (USPB)",
+			"ComponentName":"Retail Banking",
+			"Weight":1
+		},
+		{
+			"ParentName":"Personal & Wealth (Retail/HNW)",
+			"ComponentName":"U.S. Personal Banking (USPB)",
+			"Weight":1
+		},
+		{
+			"ParentName":"Personal & Wealth (Retail/HNW)",
+			"ComponentName":"Wealth Management",
+			"Weight":1
+		},
+		{
+			"ParentName":"Retail Services",
+			"ComponentName":"Private-Label Partner Cards",
+			"Weight":1
+		},
+		{
+			"ParentName":"Retail Banking",
+			"ComponentName":"Deposits",
+			"Weight":1
+		},
+		{
+			"ParentName":"Retail Banking",
+			"ComponentName":"Mortgages",
+			"Weight":1
+		},
+		{
+			"ParentName":"Retail Banking",
+			"ComponentName":"Auto Loans",
+			"Weight":1
+		},
+		{
+			"ParentName":"Retail Banking",
+			"ComponentName":"Credit Cards",
+			"Weight":1
+		},
+		{
+			"ParentName":"Citi Global Wealth / Citigold",
+			"ComponentName":"Investment Advisory",
+			"Weight":1
+		},
+		{
+			"ParentName":"Wealth Management",
+			"ComponentName":"Citi Global Wealth / Citigold",
+			"Weight":1
+		},
+		{
+			"ParentName":"Wealth Management",
+			"ComponentName":"Citi Private Bank",
+			"Weight":1
+		},
+		{
+			"ParentName":"Citi Private Bank",
+			"ComponentName":"Bespoke Portfolio & Trust Services",
+			"Weight":1
+		},
+		{
+			"ParentName":"Citi Private Bank",
+			"ComponentName":"Specialized Private Financing",
+			"Weight":1
+		},
+		{
+			"ParentName":"Total Products and Services",
+			"ComponentName":"Institutional Clients (Wholesale)",
+			"Weight":1
+		},
+		{
+			"ParentName":"Total Products and Services",
+			"ComponentName":"Personal & Wealth (Retail/HNW)",
+			"Weight":1
+		}
+	],
+	"Subsets@Code.links":
+	[
+		"Products and Services.subsets/Products Detail.json",
+		"Products and Services.subsets/Products Top.json"
+	]
+}

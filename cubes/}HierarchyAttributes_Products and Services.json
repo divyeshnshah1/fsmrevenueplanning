@@ -1,0 +1,14 @@
+{
+	"@type":"Cube",
+	"Name":"}HierarchyAttributes_Products and Services",
+	"Dimensions":
+	[
+		{
+			"@id":"Dimensions('}Hierarchies_Products and Services')"
+		},
+		{
+			"@id":"Dimensions('}HierarchyAttributes_Products and Services')"
+		}
+	],
+	"Views@Code.links":[]
+}

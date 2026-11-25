@@ -1,0 +1,24 @@
+#region Prolog
+MinorErrorLogMax = -1;
+OnMinorErrorDoItemSkip = 1;
+NumMetaRowsRead = 0;
+NumMetaRowsProcessed = 0;
+NumRowsRead = 0;
+NumRowsProcessed = 0;
+SetInputCharacterSet('TM1CS_UTF8');
+
+#endregion
+#region Data
+NumRowsRead = NumRowsRead + 1;
+If (Value @<> '' & Value @<> 'null');
+CellPutN(StringToNumberEx(Value,'.',','),'Macro Economic Variables',Region,Time_Period,Version,Macro_and_Micro_Drivers);
+NumRowsProcessed = NumRowsProcessed + 1;
+EndIf;
+
+#endregion
+#region Epilog
+If (pResult @<> '');
+TextOutput(pResult, NumberToString(NumRowsRead), NumberToString(NumRowsProcessed), NumberToString(NumMetaRowsRead), NumberToString(NumMetaRowsProcessed));
+EndIf;
+
+#endregion

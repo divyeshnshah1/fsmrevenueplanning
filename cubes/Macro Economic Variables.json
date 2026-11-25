@@ -1,0 +1,20 @@
+{
+	"@type":"Cube",
+	"Name":"Macro Economic Variables",
+	"Dimensions":
+	[
+		{
+			"@id":"Dimensions('Region')"
+		},
+		{
+			"@id":"Dimensions('Time Period')"
+		},
+		{
+			"@id":"Dimensions('Version')"
+		},
+		{
+			"@id":"Dimensions('Macro and Micro Drivers')"
+		}
+	],
+	"Views@Code.links":[]
+}

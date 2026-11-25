@@ -1,0 +1,310 @@
+{
+	"@type":"Hierarchy",
+	"Name":"Time Period",
+	"Elements":
+	[
+		{
+			"Name":"Jan 2025",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Feb 2025",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Mar 2025",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Apr 2025",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"May 2025",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Jun 2025",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Jul 2025",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Aug 2025",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Sep 2025",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Oct 2025",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Nov 2025",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Dec 2025",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Jan 2026",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Feb 2026",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Mar 2026",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Apr 2026",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"May 2026",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Jun 2026",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Jul 2026",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Aug 2026",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Sep 2026",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Oct 2026",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Nov 2026",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Dec 2026",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Q1 2025",
+			"Type":"Consolidated"
+		},
+		{
+			"Name":"Q2 2025",
+			"Type":"Consolidated"
+		},
+		{
+			"Name":"Q3 2025",
+			"Type":"Consolidated"
+		},
+		{
+			"Name":"Q4 2025",
+			"Type":"Consolidated"
+		},
+		{
+			"Name":"Q1 2026",
+			"Type":"Consolidated"
+		},
+		{
+			"Name":"Q2 2026",
+			"Type":"Consolidated"
+		},
+		{
+			"Name":"Q3 2026",
+			"Type":"Consolidated"
+		},
+		{
+			"Name":"Q4 2026",
+			"Type":"Consolidated"
+		},
+		{
+			"Name":"2025",
+			"Type":"Consolidated"
+		},
+		{
+			"Name":"2026",
+			"Type":"Consolidated"
+		}
+	],
+	"Edges":
+	[
+		{
+			"ParentName":"Q1 2025",
+			"ComponentName":"Jan 2025",
+			"Weight":1
+		},
+		{
+			"ParentName":"Q1 2025",
+			"ComponentName":"Feb 2025",
+			"Weight":1
+		},
+		{
+			"ParentName":"Q1 2025",
+			"ComponentName":"Mar 2025",
+			"Weight":1
+		},
+		{
+			"ParentName":"Q2 2025",
+			"ComponentName":"Apr 2025",
+			"Weight":1
+		},
+		{
+			"ParentName":"Q2 2025",
+			"ComponentName":"May 2025",
+			"Weight":1
+		},
+		{
+			"ParentName":"Q2 2025",
+			"ComponentName":"Jun 2025",
+			"Weight":1
+		},
+		{
+			"ParentName":"Q3 2025",
+			"ComponentName":"Jul 2025",
+			"Weight":1
+		},
+		{
+			"ParentName":"Q3 2025",
+			"ComponentName":"Aug 2025",
+			"Weight":1
+		},
+		{
+			"ParentName":"Q3 2025",
+			"ComponentName":"Sep 2025",
+			"Weight":1
+		},
+		{
+			"ParentName":"Q4 2025",
+			"ComponentName":"Oct 2025",
+			"Weight":1
+		},
+		{
+			"ParentName":"Q4 2025",
+			"ComponentName":"Nov 2025",
+			"Weight":1
+		},
+		{
+			"ParentName":"Q4 2025",
+			"ComponentName":"Dec 2025",
+			"Weight":1
+		},
+		{
+			"ParentName":"Q1 2026",
+			"ComponentName":"Jan 2026",
+			"Weight":1
+		},
+		{
+			"ParentName":"Q1 2026",
+			"ComponentName":"Feb 2026",
+			"Weight":1
+		},
+		{
+			"ParentName":"Q1 2026",
+			"ComponentName":"Mar 2026",
+			"Weight":1
+		},
+		{
+			"ParentName":"Q2 2026",
+			"ComponentName":"Apr 2026",
+			"Weight":1
+		},
+		{
+			"ParentName":"Q2 2026",
+			"ComponentName":"May 2026",
+			"Weight":1
+		},
+		{
+			"ParentName":"Q2 2026",
+			"ComponentName":"Jun 2026",
+			"Weight":1
+		},
+		{
+			"ParentName":"Q3 2026",
+			"ComponentName":"Jul 2026",
+			"Weight":1
+		},
+		{
+			"ParentName":"Q3 2026",
+			"ComponentName":"Aug 2026",
+			"Weight":1
+		},
+		{
+			"ParentName":"Q3 2026",
+			"ComponentName":"Sep 2026",
+			"Weight":1
+		},
+		{
+			"ParentName":"Q4 2026",
+			"ComponentName":"Oct 2026",
+			"Weight":1
+		},
+		{
+			"ParentName":"Q4 2026",
+			"ComponentName":"Nov 2026",
+			"Weight":1
+		},
+		{
+			"ParentName":"Q4 2026",
+			"ComponentName":"Dec 2026",
+			"Weight":1
+		},
+		{
+			"ParentName":"2025",
+			"ComponentName":"Q1 2025",
+			"Weight":1
+		},
+		{
+			"ParentName":"2025",
+			"ComponentName":"Q2 2025",
+			"Weight":1
+		},
+		{
+			"ParentName":"2025",
+			"ComponentName":"Q3 2025",
+			"Weight":1
+		},
+		{
+			"ParentName":"2025",
+			"ComponentName":"Q4 2025",
+			"Weight":1
+		},
+		{
+			"ParentName":"2026",
+			"ComponentName":"Q1 2026",
+			"Weight":1
+		},
+		{
+			"ParentName":"2026",
+			"ComponentName":"Q2 2026",
+			"Weight":1
+		},
+		{
+			"ParentName":"2026",
+			"ComponentName":"Q3 2026",
+			"Weight":1
+		},
+		{
+			"ParentName":"2026",
+			"ComponentName":"Q4 2026",
+			"Weight":1
+		}
+	],
+	"Subsets@Code.links":
+	[
+		"Time Period.subsets/Time Period Detail.json"
+	]
+}

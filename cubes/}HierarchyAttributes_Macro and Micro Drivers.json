@@ -1,0 +1,14 @@
+{
+	"@type":"Cube",
+	"Name":"}HierarchyAttributes_Macro and Micro Drivers",
+	"Dimensions":
+	[
+		{
+			"@id":"Dimensions('}Hierarchies_Macro and Micro Drivers')"
+		},
+		{
+			"@id":"Dimensions('}HierarchyAttributes_Macro and Micro Drivers')"
+		}
+	],
+	"Views@Code.links":[]
+}

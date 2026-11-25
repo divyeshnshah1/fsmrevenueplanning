@@ -1,0 +1,17 @@
+{
+	"@type":"Cube",
+	"Name":"Expensev2",
+	"Dimensions":
+	[
+		{
+			"@id":"Dimensions('Region')"
+		},
+		{
+			"@id":"Dimensions('Time Period')"
+		},
+		{
+			"@id":"Dimensions('Measures')"
+		}
+	],
+	"Views@Code.links":[]
+}
